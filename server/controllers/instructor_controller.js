@@ -14,9 +14,9 @@ module.exports = {
         console.log('create_instructor fired')
 
         const db = req.app.get('db');
-        const {auth0Id, name, email} = req.body;
+        const {auth0id, name, email} = req.body;
 
-        db.create_instructor([ auth0Id, name, email ])
+        db.create_instructor([ auth0id, name, email ])
         .then((newInstructor) => res.status(200).send())
         .catch((error) => console.log('error in create_instructor', error))
     }

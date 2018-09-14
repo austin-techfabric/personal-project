@@ -1,2 +1,2 @@
-insert into instructors (auth0Id, name, email)
+insert into instructors (auth0id, name, email)
 values ($1, $2, $3);

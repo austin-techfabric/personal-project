@@ -1,27 +1,36 @@
+drop table if exists instructors cascade 
 create table instructors (
     id serial primary key,
-    auth0Id text unique not null,
+    auth0id text unique not null,
     name varchar(30) not null,
     email varchar(100) unique not null
-)
+);
 
-create table Users (
+drop table if exists users cascade 
+create table users (
     id serial primary key,
-    auth0Id text unique not null,
+    auth0id text unique not null,
     name varchar(30) not null,
     email varchar(100) unique not null
-)
+);
 
-create table Reviews (
+drop table if exists reviews cascade 
+create table reviews (
     id serial primary  key,
-    user_id integer references Users(id),
+    user_id integer references users(id),
+    instructor_id integer references instructors(id),
     date timestamp default current_timestamp,
     content text not null
-)
-create table InstructorProfile (    										
+);
+
+drop table if exists instructor_profile cascade 
+
+create table instructor_profile (
+    id serial primary key,
+    instructor_id integer references instructors(id),										
     age integer not null,	
     gender varchar(10) not null,
-    price integer(10,2) not null,
+    price decimal(10,2) not null,
     imgUrl text not null,
     about text not null,
     yearsTeaching integer not null,
@@ -29,13 +38,14 @@ create table InstructorProfile (
     electric boolean,
     latitude text,
     longitude text
-)								
+);				
 
-drop table if exists Instructors cascade 
+			
 
+-- Dummy Data --
 
 insert into instructors (
-    auth0Id,
+    auth0id,
     name,
     email
 ) values (
@@ -43,3 +53,37 @@ insert into instructors (
     'nameTest',
     'emailtest@gmail.com'
 );
+
+insert into users (
+    auth0id,
+    name,
+    email
+) values (
+    'auth0test',
+    'nameTest',
+    'emailtest@gmail.com'
+);
+
+insert into instructor_profile (									
+    age integer not null,	
+    gender varchar(10) not null,
+    price decimal(10,2) not null,
+    imgUrl text not null,
+    about text not null,
+    yearsTeaching integer not null,
+    acoustic boolean,
+    electric boolean,
+    latitude text,
+    longitude text
+) values (
+    21,
+    'puppyGoat',
+    2.00,
+    'tfhioaefih.com/',
+    'textextextext',
+    5,
+    true,
+    false,
+    'latilat',
+    'longilong'
+)
