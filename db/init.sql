@@ -1,33 +1,33 @@
-drop table if exists instructors cascade 
+ drop table if exists instructors cascade 
 create table instructors (
     id serial primary key,
-    auth0id text unique not null,
+    auth0_id text unique not null,
     name varchar(30) not null,
     email varchar(100) unique not null
 );
 
-drop table if exists users cascade 
+-- drop table if exists users cascade 
 create table users (
     id serial primary key,
-    auth0id text unique not null,
+    auth0_id text unique not null,
     name varchar(30) not null,
     email varchar(100) unique not null
 );
 
-drop table if exists reviews cascade 
-create table reviews (
-    id serial primary  key,
-    user_id integer references users(id),
-    instructor_id integer references instructors(id),
-    date timestamp default current_timestamp,
-    content text not null
-);
+-- drop table if exists reviews cascade 
+-- create table reviews (
+--     id serial primary  key,
+--     user_id integer references users(id),
+--     instructor_id integer references instructors(id),
+--     date timestamp default current_timestamp,
+--     content text not null
+-- );
 
 drop table if exists instructor_profile cascade 
 
 create table instructor_profile (
     id serial primary key,
-    instructor_id integer references instructors(id),										
+    instructor_id text references instructors(auth0_id),										
     age integer not null,	
     gender varchar(10) not null,
     price decimal(10,2) not null,
@@ -45,7 +45,7 @@ create table instructor_profile (
 -- Dummy Data --
 
 insert into instructors (
-    auth0id,
+    auth0_id,
     name,
     email
 ) values (
@@ -55,7 +55,7 @@ insert into instructors (
 );
 
 insert into users (
-    auth0id,
+    auth0_id,
     name,
     email
 ) values (

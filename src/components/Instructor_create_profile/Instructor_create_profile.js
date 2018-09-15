@@ -1,29 +1,28 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { logIn, logOut, submitHandler } from '../../redux/reducer';
 
-export default class Instructor_create_profile extends Component {
+
+class Instructor_create_profile extends Component {
     constructor() {
         super();
         this.state = {
-          instructors: [],
-          age: undefined,
-          gender:'',
-          price: undefined,
-          imgUrl: '',
-          about: '',
-          yearsTeaching: undefined,
-          acoustic: false,
-          electric: false,
-          latitude: '',
-          longitude: '',
+          
+            age: 0,
+            gender:'',
+            price: 0,
+            imgUrl: '',
+            about: '',
+            yearsTeaching: 0,
+            acoustic: false,
+            electric: false,
+            latitude: '',
+            longitude: '',
+
         }
-        this.onChange = this.onChange.bind(this)
-        this.onSubmit = this.onSubmit.bind(this)
       }
-      onChange(e) {
-        console.log(e.target.name, e.target.value)
-        this.setState({[e.target.name]: e.target.value});
-      }
+
       onSubmit (e) {
         e.preventDefault();
          
@@ -44,60 +43,88 @@ export default class Instructor_create_profile extends Component {
     }
     
     
-      componentDidMount() {
-        axios.get('/api/instructors').then(res => this.setState({instructors:res.data}))
-      }
+    componentDidMount () {
+      axios.get('/api/instructor-data')
+      .then(response => {
+        const instructor = response.data.instructor;
+        this.props.logIn(instructor); // uses the logIn function from mapDispatchStateToProps
+      })
+    }
+    
+    onChange(e) {
+      this.setState({[e.target.name]: e.target.value});
+    }
     
       render() {
-        // const dupeInstructors = [...this.state.instructors];
-        // const displayInstructors = dupeInstructors.map((element, index) => {
-        //   return ( 
-        //   <div key={index}>
-        //     <h1>age: {element.age}</h1>
-        //     <h1>gender: {element.gender}</h1>
-        //     <h1>price: {element.price}</h1>
-        //     <h1>imgUrl: {element.imgUrl}</h1>
-        //     <h1>about: {element.about}</h1>
-        //     <h1>yearsTeaching: {element.yearsTeaching}</h1>
-        //     <h1>acoustic: {element.acoustic}</h1>
-        //     <h1>electric: {element.electric}</h1>
-        //     <h1>latitude: {element.latitude}</h1>
-        //     <h1>longitude: {element.longitude}</h1>
-        //   </div>
-        //   )
-        // })
-        // {displayInstructors}
+        
+        const { instructor, submitHandler } = this.props
+        const { age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude} = this.state
+        //Login with Google to test instructors[0]
+        console.log(instructor[0]);
+        const { id, email, name } = instructor[0]
         return (
-            <div className="App">
+          <div>
+          {
+            instructor
+            ?
+            <div><h1>{name}</h1>
+            <h1>{email}</h1>
+            <h1>{id}</h1>
             
             <h1>Rendered</h1>
             <hr/>
-    
+            
             <form onSubmit={this.onSubmit}> 
-
+            
            <label>age: </label>
-          <input type="text" name="age" value={this.state.age || ''} onChange={this.onChange} />
+           <input type="text" name="age" value={age || ''} onChange={this.onChange} />
+
            <label>gender: </label>
-          <input type="text" name="gender" value={this.state.gender} onChange={this.onChange} />
-           <label>price: </label>
-          <input type="text" name="price" value={this.state.price || ''} onChange={this.onChange} />
-           <label>imgUrl: </label>
-          <input type="text" name="imgUrl" value={this.state.imgUrl} onChange={this.onChange} />
-           <label>about: </label>
-          <input type="text" name="about" value={this.state.about} onChange={this.onChange} />
-           <label>yearsTeaching: </label>
-          <input type="text" name="yearsTeaching" value={this.state.yearsTeaching || ''} onChange={this.onChange} />
-           <label>acoustic: </label>
-          <input type="text" name="acoustic" value={this.state.acoustic} onChange={this.onChange} />
-           <label>electric: </label>
-          <input type="text" name="electric" value={this.state.electric} onChange={this.onChange} />
+          <input type="text" name="gender" value={gender} onChange={this.onChange} />
+
+          <label>price: </label>
+          <input type="text" name="price" value={price || ''} onChange={this.onChange} />
+
+          <label>imgUrl: </label>
+          <input type="text" name="imgUrl" value={imgUrl} onChange={this.onChange} />
+
+          <label>about: </label>
+          <input type="text" name="about" value={about} onChange={this.onChange} />
+
+          <label>yearsTeaching: </label>
+          <input type="text" name="yearsTeaching" value={yearsTeaching || ''} onChange={this.onChange} />
+
+          <label>acoustic: </label>
+          <input type="text" name="acoustic" value={acoustic} onChange={this.onChange} />
+
+          <label>electric: </label>
+          <input type="text" name="electric" value={electric} onChange={this.onChange} />
+
           <label>latitude: </label>
-          <input type="text" name="latitude" value={this.state.latitude} onChange={this.onChange} />
+          <input type="text" name="latitude" value={latitude} onChange={this.onChange} />
+
           <label>longitude: </label>
-          <input type="text" name="longitude" value={this.state.longitude} onChange={this.onChange} />
-          <button type="submit">Submit</button>
+          <input type="text" name="longitude" value={longitude} onChange={this.onChange} />
+
+          <button type="submit" onClick={() => submitHandler(id, age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude)}>Submit</button>
           </form>
-         </div>
+          <button onClick={logOut}>Log out</button>
+            </div> : 'you need to log in..'
+          }
+          </div>
         );
   }
 }
+
+const mapStateToProps = state => {
+  const { instructor, instructor_profile } = state.instructor_reducer;
+  return { instructor, instructor_profile }
+}
+
+const mapDispatchToProps = {
+  logIn,
+  logOut,
+  submitHandler
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Instructor_create_profile)

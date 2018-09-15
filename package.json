@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "main": "server/index.js",
-  "proxy": "http://localhost:4000",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
@@ -13,16 +12,28 @@
     "express-session": "^1.15.6",
     "massive": "^5.3.0",
     "react": "^16.5.0",
+    "react-app-rewire-hot-loader": "^1.0.1",
+    "react-app-rewired": "^1.6.2",
     "react-dom": "^16.5.0",
+    "react-hot-loader": "^4.3.7",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "redux-promise-middleware": "^5.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/auth/callback": {
+      "target": "http://localhost:4000"
+    },
+    "/api": {
+      "target": "http://localhost:4000"
+    }
   }
 }

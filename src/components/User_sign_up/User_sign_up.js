@@ -6,7 +6,7 @@ export default class User_sign_up extends Component {
         super();
         this.state = {
           users: [],
-          auth0id:'',
+          auth0_id:'',
           name:'',
           email:'',
         }
@@ -21,7 +21,7 @@ export default class User_sign_up extends Component {
         e.preventDefault();
          
         const post = {
-            auth0id: this.state.auth0id,
+            auth0_id: this.state.auth0_id,
             name: this.state.name,
             email: this.state.email
         }
@@ -40,7 +40,7 @@ export default class User_sign_up extends Component {
           return ( 
           <div key={index}>
           <hr />
-            <h1>auth0id: {element.auth0id}</h1>
+            <h1>auth0_id: {element.auth0_id}</h1>
             <h1>name: {element.name}</h1>
             <h1>email: {element.email}</h1>
           </div>
@@ -54,8 +54,8 @@ export default class User_sign_up extends Component {
             <hr/>
     
            <form onSubmit={this.onSubmit}> 
-           <label>auth0id: </label>
-          <input type="text" name="auth0id" value={this.state.auth0id} onChange={this.onChange} />
+           <label>auth0_id: </label>
+          <input type="text" name="auth0_id" value={this.state.auth0_id} onChange={this.onChange} />
           <label>name: </label>
           <input type="text" name="name" value={this.state.name} onChange={this.onChange} />
           <label>email: </label>
