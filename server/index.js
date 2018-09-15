@@ -63,6 +63,7 @@ app.get(`/auth/callback`, (req, res) => {
                 //     name,
                 //     email,
                 // };
+                //Login with Google to test instructors[0]
                 return db.create_instructor([auth0Id, name,  email]).then(newlyCreatedUser => {
                     console.log('newlyCreatedUser', newlyCreatedUser)
                     req.session.instructor = newlyCreatedUser;
