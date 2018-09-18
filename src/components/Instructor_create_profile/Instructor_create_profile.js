@@ -19,53 +19,60 @@ class Instructor_create_profile extends Component {
             electric: false,
             latitude: '',
             longitude: '',
+            
+          }
+
+          this.onChange = this.onChange.bind(this)
 
         }
-      }
-
-      onSubmit (e) {
+        
+        componentDidMount () {
+          axios.get('/api/instructor-data')
+          .then(response => {
+            const user = response.data.user;
+            this.props.logIn(user); // uses the logIn function from mapDispatchStateToProps
+          })
+        }
+        
+        onSubmit (e) {
         e.preventDefault();
          
         const profile = { 
-            age: null,
-            gender:'',
-            price: null,
-            imgUrl: '',
-            about: '',
-            yearsTeaching: null,
-            acoustic: false,
-            electric: false,
-            latitude: '',
-            longitude: '',
+            age: this.state.age,
+            gender:this.state.gender,
+            price: this.state.price,
+            imgUrl: this.state.imgUrl,
+            about: this.state.about,
+            yearsTeaching: this.state.yearsTeaching,
+            acoustic: this.state.acoustic,
+            electric: this.state.electric,
+            latitude: this.state.latitude,
+            longitude: this.state.longitude,
         }
+
         console.log(profile)
-        // axios.post(`/api/instructors`, profile)
+  
     }
     
-    
-    componentDidMount () {
-      axios.get('/api/instructor-data')
-      .then(response => {
-        const instructor = response.data.instructor;
-        this.props.logIn(instructor); // uses the logIn function from mapDispatchStateToProps
-      })
-    }
     
     onChange(e) {
+      console.log(e.target.name, e.target.value)
       this.setState({[e.target.name]: e.target.value});
     }
     
       render() {
         
-        const { instructor, submitHandler } = this.props
+        const { user, submitHandler } = this.props
         const { age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude} = this.state
-        //Login with Google to test instructors[0]
-        console.log(instructor[0]);
-        const { id, email, name } = instructor[0]
+        
+        console.log(user); 
+        
+        const { id, email, name } = user
+
         return (
           <div>
           {
-            instructor
+            user
             ?
             <div><h1>{name}</h1>
             <h1>{email}</h1>
@@ -74,7 +81,7 @@ class Instructor_create_profile extends Component {
             <h1>Rendered</h1>
             <hr/>
             
-            <form onSubmit={this.onSubmit}> 
+            <form onSubmit={(e) => this.onSubmit(e)}> 
             
            <label>age: </label>
            <input type="text" name="age" value={age || ''} onChange={this.onChange} />
@@ -106,7 +113,7 @@ class Instructor_create_profile extends Component {
           <label>longitude: </label>
           <input type="text" name="longitude" value={longitude} onChange={this.onChange} />
 
-          <button type="submit" onClick={() => submitHandler(id, age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude)}>Submit</button>
+          <button type="submit" onClick={() => submitHandler(age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude, id)}>Submit</button>
           </form>
           <button onClick={logOut}>Log out</button>
             </div> : 'you need to log in..'
@@ -117,8 +124,8 @@ class Instructor_create_profile extends Component {
 }
 
 const mapStateToProps = state => {
-  const { instructor, instructor_profile } = state.instructor_reducer;
-  return { instructor, instructor_profile }
+  const { user, instructor_profile } = state.instructor_reducer;
+  return { user, instructor_profile }
 }
 
 const mapDispatchToProps = {

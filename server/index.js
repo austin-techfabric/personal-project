@@ -9,8 +9,8 @@ const app = express();
 
 // ===   controllers   === \\
 
-const instructor_controller = require('./controllers/instructor_controller');
 const user_controller = require('./controllers/user_controller');
+const instructor_profile_controller = require('./controllers/instructor_profile_controller');
 
 // === Middlewares === \\
 
@@ -47,29 +47,34 @@ app.get(`/auth/callback`, (req, res) => {
         const auth0Id = response.data.sub;
         console.log(' auth0Id',auth0Id);
         const db = req.app.get('db');
-        return db.get_instructor_by_auth0_id(auth0Id).then(instructors => {
-            if(instructors.length) {
+        return db.get_user_by_auth0_id(auth0Id).then(users => {
+            if(users.length) {
                 console.log('user found');
-                const instructor = instructors[0];
-                req.session.instructor = instructor;
-                res.redirect('/instructor_create_profile');
+                const user = users[0];
+                req.session.user = user;
+                if(!users.instructor) {
+                    console.log(' instructor = true conditional reached')
+                    if(users.profileComplete) {
+                        console.log('profileComplete nested if statement fired')
+                        res.redirect('/dashboard');
+                    } else {
+                        console.log('Instructor create profile reached')
+                        res.redirect('/instructor_create_profile'); 
+                    }
+                } else {
+                    res.redirect('/dashboard');
+                }
             } else {
                 console.log('user not found, creating');
                 let {name, email} = response.data;
                 console.log(auth0Id, name, email);
                 
-                // const userRecordValues = {
-                //     auth0Id,
-                //     name,
-                //     email,
-                // };
-                //Login with Google to test instructors[0]
-                return db.create_instructor([auth0Id, name,  email]).then(newlyCreatedUser => {
+                return db.create_user([auth0Id, name,  email]).then(newlyCreatedUser => {
                     console.log('newlyCreatedUser', newlyCreatedUser)
-                    req.session.instructor = newlyCreatedUser;
-                    res.redirect('/instructor_create_profile')
+                    req.session.user = newlyCreatedUser;
+                    res.redirect('/learn_or_teach')
                 }).catch(err => {
-                    console.log('(create_instructor) error in create_instructor', err)
+                    console.log('(create_user) error in create_user', err)
                     res.status(500).send('Unexpected error ')
                 })
             }
@@ -97,26 +102,17 @@ massive(process.env.CONNECTION_STRING).then(database => {
 .catch(error => console.log( 'massive error' ,error));
 
 
-// === Instructors Controller === \\ 
+// === Users Controller === \\ 
 
-// app.get('/api/instructors', instructor_controller.get_all);
-app.post('/api/instructors', instructor_controller.get_instructor_by_auth0_id);
-
-// === User Controller === \\
-
-app.get('/api/users', user_controller.get_all);
-// app.post('/api/users', user_controller.create_user);
+// app.get('/api/users', user_controller.get_all);
+app.post('/api/users', user_controller.get_user_by_auth0_id);
 
 // === Instructor Profile Controller === \\
-
-// app.get(`/api/instructor_profile/:id`, user_controller.get_profile);
-// app.post(`/api/instructor_profile/`, user_controller.create_user);
-
+app.post(`/api/instructor_profile`, instructor_profile_controller.create);
 
 app.get('/api/instructor-data', (req, res) => {
-    res.json({ instructor: req.session.instructor});
+    res.json({ user: req.session.user});
 });
-
 
 // === Auth0 Logout === \\
 app.post('/api/logout', (req, res) => {

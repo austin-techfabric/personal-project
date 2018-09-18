@@ -7,11 +7,10 @@ export default class Dashboard extends Component {
 
         }
     }
-    componentDidMount
   render() {
     return (
       <div>
-        
+        <h1>Dashboard</h1>
       </div>
     )
   }

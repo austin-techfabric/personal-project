@@ -1,11 +1,7 @@
 import axios from 'axios';
 
 const initialState = {
-    user: {
-        auth0_id: '',
-        name: '',
-        email: ''
-    },
+    user: {},
     instructor: {},
     instructors: [],
     instructor_profile: []
@@ -18,9 +14,9 @@ const SUBMIT_HANDLER = 'SUBMIT_HANDLER'
 export default function instructor_reducer(state = initialState, action) {
     switch (action.type) {
         case LOGGED_IN:
-            return {...state, instructor: action.payload}
+            return {...state, user: action.payload}
         case LOGGED_OUT:
-            return {...state, instructor: null}
+            return {...state, user: null}
         case SUBMIT_HANDLER:
             return {...state, instructor_profile: action.payload}
         default:
@@ -28,10 +24,10 @@ export default function instructor_reducer(state = initialState, action) {
     }
 } 
 
-export function logIn(instructor) {
+export function logIn(user) {
     return {
         type: LOGGED_IN,
-        payload: instructor
+        payload: user
     }
 }
 export function logOut() {
@@ -41,10 +37,10 @@ export function logOut() {
         // payload: null,
     }
 }
-export function submitHandler(id, age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude) {
-    console.log(id, age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude);
+export function submitHandler(age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude, id) {
+    console.log(age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude, id);
     return {
         type: SUBMIT_HANDLER,
-        payload: axios.post(`/api/instructor_profile`, {id, age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude}).then(() => window.location.pathname='/').catch(err => console.log('err', err))
+        payload: axios.post(`/api/instructor_profile/`, {age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude, id}).then(() => window.location.pathname='/dashboard').catch(err => console.log('err', err))
     }
 }
