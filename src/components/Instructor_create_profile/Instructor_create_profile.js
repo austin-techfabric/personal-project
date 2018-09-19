@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { logIn, logOut, submitHandler } from '../../redux/reducer';
+import { logOut, submitHandler, setComplete } from '../../redux/reducer';
 
 
 class Instructor_create_profile extends Component {
@@ -24,14 +23,6 @@ class Instructor_create_profile extends Component {
 
           this.onChange = this.onChange.bind(this)
 
-        }
-        
-        componentDidMount () {
-          axios.get('/api/instructor-data')
-          .then(response => {
-            const user = response.data.user;
-            this.props.logIn(user); // uses the logIn function from mapDispatchStateToProps
-          })
         }
         
         onSubmit (e) {
@@ -62,7 +53,7 @@ class Instructor_create_profile extends Component {
     
       render() {
         
-        const { user, submitHandler } = this.props
+        const { user, submitHandler, setComplete } = this.props
         const { age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude} = this.state
         
         console.log(user); 
@@ -113,7 +104,9 @@ class Instructor_create_profile extends Component {
           <label>longitude: </label>
           <input type="text" name="longitude" value={longitude} onChange={this.onChange} />
 
-          <button type="submit" onClick={() => submitHandler(age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude, id)}>Submit</button>
+          <button type="submit" onClick={() => {
+            submitHandler(age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, latitude, longitude, id)
+            setComplete(id)}}>Submit</button>
           </form>
           <button onClick={logOut}>Log out</button>
             </div> : 'you need to log in..'
@@ -124,14 +117,14 @@ class Instructor_create_profile extends Component {
 }
 
 const mapStateToProps = state => {
-  const { user, instructor_profile } = state.instructor_reducer;
-  return { user, instructor_profile }
+  const { user } = state.instructor_reducer;
+  return { user }
 }
 
 const mapDispatchToProps = {
-  logIn,
   logOut,
-  submitHandler
+  submitHandler,
+  setComplete
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Instructor_create_profile)

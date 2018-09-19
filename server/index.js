@@ -52,7 +52,7 @@ app.get(`/auth/callback`, (req, res) => {
                 console.log('user found');
                 const user = users[0];
                 req.session.user = user;
-                if(!users.instructor) {
+                if(users.instructor) {
                     console.log(' instructor = true conditional reached')
                     if(users.profileComplete) {
                         console.log('profileComplete nested if statement fired')
@@ -108,10 +108,13 @@ massive(process.env.CONNECTION_STRING).then(database => {
 app.post('/api/users', user_controller.get_user_by_auth0_id);
 
 // === Instructor Profile Controller === \\
-app.post(`/api/instructor_profile`, instructor_profile_controller.create);
+app.post(`/api/instructor_profile`, instructor_profile_controller.create)
 
-app.get('/api/instructor-data', (req, res) => {
-    res.json({ user: req.session.user});
+app.put(`/api/user-data`, instructor_profile_controller.set_as_instructor);
+app.post(`/api/set_profile_complete`, instructor_profile_controller.set_complete);
+
+app.get('/api/user-data', (req, res) => {
+    res.json(req.session.user);
 });
 
 // === Auth0 Logout === \\
