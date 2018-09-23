@@ -1,40 +1,51 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import { logIn } from './../../redux/reducer';
+// import React, { Component } from 'react'
+// import axios from 'axios';
+// import { connect } from 'react-redux';
+// import { logIn } from './../../redux/reducer';
 
-import './Header.css';
+// import './Header.css';
 
-class Header extends Component {
-    login = () => {
-        const redirectUri = encodeURIComponent(`${window.location.origin}/auth/callback`);
-        window.location = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${redirectUri}&response_type=code`
-      }
-      componentDidMount() {
-        this.props.logIn()
-        }
-  render() {
-    return (
-      <div className="header">
-        { !this.props.userLoggedIn ?
-        <button onClick={this.login}>Log in</button>  
-        : <button>log out</button>
-        }
-      </div>
-    )
-  }
-}
+// class Header extends Component {
+  // constructor() {
+  //   super();
+  //   this.logOut = this.logOut.bind(this)
+  // }
+  // logOut = () =>  {
+  //       axios.post('/api/logout')
+  //       .then()
+  //       .catch(err => console.log('error in logOut', err))
+  // }
 
-const mapStateToProps = state => {
-  const { user, isLoading, userLoggedIn } = state.instructor_reducer;
-  console.log(user)
-  return { user, isLoading, userLoggedIn }
-}
+  //     componentDidMount() {
+  //               this.props.logIn()
+  //       }
 
-const mapDispatchToProps = {
-  logIn
-}
+  // render() {
+  //   const { user } = this.props
+  //   return (
+  //     <div className="header">
+          {/* {
+            user
+            ?
+        <button onClick={this.logOut}>Log out</button>
+        : <button onClick={this.login}>Log in</button>   
+        } */}
+//       </div>
+//     )
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+// const mapStateToProps = state => {
+//   const { user, isLoading } = state.instructor_reducer;
+//   console.log(user)
+//   return { user, isLoading }
+// }
 
+// const mapDispatchToProps = {
+//   logIn,
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Header)
+// export default Header
     
     

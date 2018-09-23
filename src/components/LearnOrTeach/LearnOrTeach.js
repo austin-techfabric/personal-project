@@ -5,6 +5,16 @@ import { setInstructor } from '../../redux/reducer'
 
 
 class LearnOrTeach extends Component {
+    constructor () {
+        super();
+        this.state = {
+
+        }
+        this.redirectHandler = this.redirectHandler.bind(this)
+    }
+    redirectHandler = () => {
+        window.location.pathname="/dashboard"
+    }
     render() {
         // console.log(this.props.user[0])
         const { isLoading } = this.props;
@@ -16,7 +26,7 @@ class LearnOrTeach extends Component {
                 { isLoading ? null
                 : <div><h1>LearnOrTeach</h1> 
                 <button onClick={() => setInstructor(this.props.user[0].id)}>Sign up as an instructor</button>
-                <button>Sign up as a student</button> </div>
+                <button onClick={() => this.redirectHandler()}>Sign up as a student</button> </div>
                 }
                 
             </div>
@@ -25,9 +35,9 @@ class LearnOrTeach extends Component {
 } 
 
 const mapStateToProps = state => {
-    const { user, isLoading } = state.instructor_reducer;
-    console.log(user)
-    return { user, isLoading }
+    const { user, isLoading , instructor} = state.instructor_reducer;
+    console.log(user, instructor)
+    return { user, isLoading, instructor }
   }
   
   const mapDispatchToProps = {

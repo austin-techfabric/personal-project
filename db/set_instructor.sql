@@ -1,2 +1,2 @@
-update users set instructor = $1 where id = $2
+update users set instructor = true where id = $1
 returning * ;

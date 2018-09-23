@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Dashboard extends Component {
     constructor() {
@@ -13,6 +14,7 @@ class Dashboard extends Component {
     return (
       <div>
         <h1>Dashboard</h1>
+        <Link to='/display_instructors'>Find instructors!</Link>
       </div>
     )
   }

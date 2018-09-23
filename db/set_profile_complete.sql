@@ -1,1 +1,1 @@
-update users set profilecomplete = $1 where id = $2;
+update users set profilecomplete = true where id = $1;

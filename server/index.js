@@ -8,12 +8,12 @@ require('dotenv').config();
 const app = express();
 
 // ===   controllers   === \\
-
 const user_controller = require('./controllers/user_controller');
+const display_single_instructor = require('./controllers/display_single_instructor')
+const display_instructors = require('./controllers/display_instructors');
 const instructor_profile_controller = require('./controllers/instructor_profile_controller');
 
 // === Middlewares === \\
-
 app.use(bodyParser.json());
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -26,8 +26,6 @@ app.use(session({
    app.use(express.static(`${__dirname}/../build`));
 
 // === Auth0 === \\
-
-
 app.get(`/auth/callback`, (req, res) => {
     const payload = {
         client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
@@ -97,28 +95,32 @@ app.get(`/auth/callback`, (req, res) => {
 massive(process.env.CONNECTION_STRING).then(database => {
     console.log('connected to the DB')
     app.set('db', database)
-    }
-)
-.catch(error => console.log( 'massive error' ,error));
+    }).catch(error => console.log( 'massive error' ,error));
 
 
-// === Users Controller === \\ 
 
-// app.get('/api/users', user_controller.get_all);
-app.post('/api/users', user_controller.get_user_by_auth0_id);
+app.get('/api/instructor_profile/:id', display_single_instructor.get_user_by_id);
 
-// === Instructor Profile Controller === \\
 app.post(`/api/instructor_profile`, instructor_profile_controller.create)
 
-app.put(`/api/user-data`, instructor_profile_controller.set_as_instructor);
-app.post(`/api/set_profile_complete`, instructor_profile_controller.set_complete);
+app.get('/api/instructors', display_instructors.get_all_instructors);
 
+
+app.put(`/api/set_profile_complete`, instructor_profile_controller.set_complete);
+
+app.put('/api/set_instructor', instructor_profile_controller.set_as_instructor);
+
+app.post('/api/users', user_controller.get_user_by_auth0_id);
+
+
+// === Auth0 Login === \\
 app.get('/api/user-data', (req, res) => {
+    console.log(req.session.user)
     res.json(req.session.user);
 });
 
 // === Auth0 Logout === \\
-app.post('/api/logout', (req, res) => {
+app.post('/api/auth/logout', (req, res) => {
     req.session.destroy()
     res.send()
 });
