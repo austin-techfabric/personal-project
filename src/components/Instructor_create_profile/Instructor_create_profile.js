@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { submitHandler, setComplete } from '../../redux/reducer';
+import { submitHandler, setComplete, updateUser } from '../../redux/reducer';
+// import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 class Instructor_create_profile extends Component {
@@ -20,14 +22,8 @@ class Instructor_create_profile extends Component {
             city: '',
             state: '',
             country: '',
-            ussr: []
           }
           this.onChange = this.onChange.bind(this)
-        }
-        
-        componentDidMount() {
-          console.log('fired~!!!!')
-         this.setState({ussr: this.props.user})
         }
 
         onSubmit (e) {
@@ -56,14 +52,13 @@ class Instructor_create_profile extends Component {
     }
     
       render() {
-        
+        const data = this.props.user.length > 0 ? this.props.user[0]: {}
+        console.log('data', data)
         const { user, submitHandler, setComplete } = this.props
         const { age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, zipcode, address, city, state, country} = this.state
         
-        console.log(this.state.ussr); 
         
-        const { id, email, name } = user
-        console.log(id)
+        const { id, email, name } = data
         return (
           <div>
           {
@@ -114,9 +109,10 @@ class Instructor_create_profile extends Component {
           <label>country: </label>
           <input type="text" name="country" value={country} onChange={this.onChange} />
 
-          <button type="submit" onClick={() => {
+          <Link to="/dashboard"><button type="submit" onClick={() => {
             submitHandler(age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, zipcode, address, city, state, country, id)
-            setComplete(id)}}>Submit</button>
+            setComplete(id)
+            }}>Submit</button></Link>
           </form>
             </div> : 'you need to log in..'
           }
@@ -132,7 +128,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   submitHandler,
-  setComplete
+  setComplete,
+  updateUser
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Instructor_create_profile)

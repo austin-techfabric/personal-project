@@ -5,8 +5,9 @@ module.exports = {
         const { id } = req.body;
         db.set_instructor([id])
         .then((instructor) => {
-            req.session.user = instructor
-            console.log(req.session.user)
+           console.log('=========================',)
+            req.session.user[0].instructor = instructor[0].instructor;
+            // console.log(req.session.user)
             res.status(200).send(req.session.user)
         })
         .catch(err => console.log('error in set_as_instructor ---', err))
@@ -16,9 +17,9 @@ module.exports = {
         const db = req.app.get('db')
         const { id } = req.body;
         db.set_profile_complete([id])
-        .then((instructor) => {
-            req.session.user = instructor
-            console.log(req.session.user)
+        .then((profilecomplete) => {
+            req.session.user[0].profilecomplete = profilecomplete[0].profilecomplete
+            // console.log(req.session.user)
             res.status(200).send(req.session.user)
         })
         .catch((error) => {console.log('error in set_complete', error)})
@@ -29,7 +30,9 @@ module.exports = {
         const {age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, zipcode, address, city, state, country, id} = req.body;
         console.log(age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, zipcode, address, city, state, country, id)
         db.create_instructor_profile_by_id([age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, zipcode, address, city, state, country, id])
-        .then((instructorProfile) => {res.status(200).send('OK')})
+        .then((instructorProfile) => {
+            // console.log(instructorProfile)
+            res.status(204).send(instructorProfile)})
         .catch((error) => {console.log('error in create : instructor_profile_profile', error)})
     }
 }

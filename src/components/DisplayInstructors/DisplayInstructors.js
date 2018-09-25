@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import './DisplayInstructors.css'
 
@@ -25,12 +26,6 @@ class DisplayInstructors extends Component {
         })
         this.props.getInstructors()
     }
-
-    // handleClick = (id) => {
-    //     console.log('You been clicked!')
-    //     this.props.getSingleInstructor()
-    //     window.location.pathname = `/instructor_profile/${id}`
-    // }
 
 
 // u.id, 
@@ -61,14 +56,17 @@ class DisplayInstructors extends Component {
         const displayBubbas = this.props.instructors.map((inst, index) => {
 
             return (
-                <div onClick={() => this.props.getSingleInstructor(inst.id)} className='instContainer' key={index}>
+                <div key={index} className='instContainer'>
+                <Link to={`/instructor_profile/${inst.id}`}  onClick={() => this.props.getSingleInstructor(inst.id)} >
+                <div>
                     <h1>{inst.name}</h1>
                     <h3>{inst.age}</h3>
                     <h3>{inst.gender}</h3>
                     <h3>Hourly rate: ${inst.price}</h3>
-                    <span>{inst.electric ? <p>electric = true</p> : null}</span>
-                    <span>{inst.acoustic ? <p>acoustic = true</p> : null}</span>
-                    
+                    <span>{inst.electric && <p>electric = true</p>}</span>
+                    <span>{inst.acoustic && <p>acoustic = true</p>}</span>
+                    </div>
+                    </Link>
                 </div>
             )
         })

@@ -57,7 +57,8 @@ where u.id = 4;
 create table reviews (
     id serial primary key,
     poster_id integer references users(id),	
+    profile_id integer references instructor_profile(id),	
     title varchar(30) not null,
-    reviewTitle varchar(30) not null,
-    content text not null
+    content text not null,
+    stars integer not null
 );

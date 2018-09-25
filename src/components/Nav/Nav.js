@@ -30,16 +30,20 @@ class Nav extends Component {
     logout() {
         axios.post('/api/auth/logout').then(response => {
           window.alert('Successfully logged out')
+           this.setState({
+             user: ''
+             })
         }).catch(error => console.log('error',error))
       }
 
       
     render() {
+      
         const { user } = this.state
-        // console.log('/Nav.js ---- this.state.user ------->', this.state.user)
+        console.log('/Nav.js ---- this.props.user ------->', this.props.user)
         return (
             <div className='Nav'>
-            {user.length ? <Link to='/'><button onClick={()=>this.logout()}> Logout</button></Link> : <button onClick={() => {this.login()}}>Login</button>}
+            {user ? <Link to='/'><button onClick={()=>this.logout()}> Logout</button></Link> : <button onClick={() => {this.login()}}>Login</button>}
             </div>
         )
     }

@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import LearnOrTeach from './components/LearnOrTeach/LearnOrTeach';
 import Instructor_create_profile from './components/Instructor_create_profile/Instructor_create_profile';
 import DisplayInstructors from './components/DisplayInstructors/DisplayInstructors';
+import instructorProfile from './components/InstructorProfile/InstructorProfile';
 
 export default (
     <Switch>
@@ -12,5 +13,6 @@ export default (
     <Route path="/learn_or_teach" component={LearnOrTeach} />
     <Route path="/instructor_create_profile" component={Instructor_create_profile} />
     <Route path="/display_instructors" component={DisplayInstructors} />
+    <Route path="/instructor_profile/:id" component={instructorProfile} />
     </Switch>
 )

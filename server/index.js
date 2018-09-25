@@ -7,14 +7,22 @@ require('dotenv').config();
 
 const app = express();
 
-// ===   controllers   === \\
-const user_controller = require('./controllers/user_controller');
+// =====================================   controllers   ============================================= \\
+
+
+// const user_controller = require('./controllers/user_controller');
+const review_controller = require('./controllers/review_controller');
 const display_single_instructor = require('./controllers/display_single_instructor')
 const display_instructors = require('./controllers/display_instructors');
 const instructor_profile_controller = require('./controllers/instructor_profile_controller');
 
-// === Middlewares === \\
+
+
+// =====================================   Middlewares    =============================================== \\
+
+
 app.use(bodyParser.json());
+
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -25,7 +33,7 @@ app.use(session({
    }));
    app.use(express.static(`${__dirname}/../build`));
 
-// === Auth0 === \\
+// ===============================================    Auth0    ============================================= \\
 app.get(`/auth/callback`, (req, res) => {
     const payload = {
         client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
@@ -90,36 +98,47 @@ app.get(`/auth/callback`, (req, res) => {
 })
 
 
-// === Database Connection === \\
+// ===================================== Database Connection ==================================== \\
 
 massive(process.env.CONNECTION_STRING).then(database => {
     console.log('connected to the DB')
     app.set('db', database)
+    // database.reset();
     }).catch(error => console.log( 'massive error' ,error));
 
 
+// =========================================== END POINTS ======================================= \\
+
 
 app.get('/api/instructor_profile/:id', display_single_instructor.get_user_by_id);
+
+app.get('/api/instructor_reviews/:id', review_controller.get_reviews);
+app.delete('/api/instructor_reviews/:id', review_controller.delete);
+app.put('/api/instructor_reviews/:id', review_controller.edit);
+app.post('/api/instructor_reviews/:id', review_controller.create);
 
 app.post(`/api/instructor_profile`, instructor_profile_controller.create)
 
 app.get('/api/instructors', display_instructors.get_all_instructors);
 
-
 app.put(`/api/set_profile_complete`, instructor_profile_controller.set_complete);
 
 app.put('/api/set_instructor', instructor_profile_controller.set_as_instructor);
 
-app.post('/api/users', user_controller.get_user_by_auth0_id);
+// app.post('/api/users', user_controller.get_user_by_auth0_id);
 
 
-// === Auth0 Login === \\
+// ================================================ Auth0 Login ====================================== \\
+
+
 app.get('/api/user-data', (req, res) => {
     console.log(req.session.user)
     res.json(req.session.user);
 });
 
-// === Auth0 Logout === \\
+// ================================================= Auth0 Logout ===================================== \\
+
+
 app.post('/api/auth/logout', (req, res) => {
     req.session.destroy()
     res.send()

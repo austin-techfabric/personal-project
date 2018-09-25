@@ -13,7 +13,10 @@ class LearnOrTeach extends Component {
         this.redirectHandler = this.redirectHandler.bind(this)
     }
     redirectHandler = () => {
-        window.location.pathname="/dashboard"
+        this.props.history.push("/instructor_create_profile");
+    }
+    studentHandler = () => {
+        this.props.history.push("/dashboard");
     }
     render() {
         // console.log(this.props.user[0])
@@ -25,8 +28,11 @@ class LearnOrTeach extends Component {
                 
                 { isLoading ? null
                 : <div><h1>LearnOrTeach</h1> 
-                <button onClick={() => setInstructor(this.props.user[0].id)}>Sign up as an instructor</button>
-                <button onClick={() => this.redirectHandler()}>Sign up as a student</button> </div>
+                <button onClick={() => {
+                    setInstructor(this.props.user[0].id)
+                    this.redirectHandler()
+                    }}>Sign up as an instructor</button>
+                <button onClick={() => this.studentHandler()}>Sign up as a student</button> </div>
                 }
                 
             </div>
