@@ -5,7 +5,7 @@ module.exports = {
         const { id } = req.body;
         db.set_instructor([id])
         .then((instructor) => {
-           console.log('=========================',)
+        //    console.log('=========================',)
             req.session.user[0].instructor = instructor[0].instructor;
             // console.log(req.session.user)
             res.status(200).send(req.session.user)
@@ -24,12 +24,48 @@ module.exports = {
         })
         .catch((error) => {console.log('error in set_complete', error)})
     },
+
+        // age,	
+        // gender,     
+        // locationType,       
+        // zipcode,    
+        // address,    
+        // city,   
+        // state,      
+        // country,
+        // price,    
+        // instruments,      
+        // styles,     
+        // skillLevel,    
+        // teachingSince,    
+        // about,    
+        // education  
+        // instructor_id,      
+
     create: (req, res) => {
         console.log('Create instructor profile fired!')
         const db = req.app.get('db')
-        const {age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, zipcode, address, city, state, country, id} = req.body;
-        console.log(age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, zipcode, address, city, state, country, id)
-        db.create_instructor_profile_by_id([age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, zipcode, address, city, state, country, id])
+        const {        
+            age,	
+            gender,     
+            locationType,       
+            zipcode,    
+            address,    
+            city,   
+            state,      
+            country,
+            price,    
+            instruments,      
+            styles,     
+            skillLevel,    
+            teachingSince,    
+            about,    
+            education,  
+            id, 
+        } = req.body;
+        console.log(JSON.stringify(instruments))
+        console.log(age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id)
+        db.create_instructor_profile_by_id([age, gender, locationType, zipcode, address, city, state, country, price, {instruments}, {styles}, skillLevel, teachingSince, about, education, id])
         .then((instructorProfile) => {
             // console.log(instructorProfile)
             res.status(204).send(instructorProfile)})

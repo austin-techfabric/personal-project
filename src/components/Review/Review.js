@@ -25,20 +25,32 @@ class Review extends Component {
         this.setState({[e.target.name]: e.target.value});
       }
 
+        // write ternary to check if user id === poster_id and if so render the edit button = 20 min
+
+
     render() {
-        // console.log(this.state.toggleValue)
+        const {user, poster} = this.props;
+        
+        console.log(user)
+        console.log(poster)
+        // console.log(req.session.user)
         return (
             <div className='review-wrapper'>
                 { !this.state.toggleValue 
                 ?
                 <div>
                 <h1>Title: {this.props.title}</h1>
+                <p>Date: {this.props.date}</p>
                 <p>Rating: {this.props.stars}/5</p>
                 <p>Content</p>
                 <p>{this.props.body}</p>
+                {  user.id === poster 
+                ?
                 <div>
                     <button onClick={() => this.toggleEdit()}>Edit</button>
                 </div>
+                : null
+                }
                 </div>
                 : <div>
                     <label>Title</label>
@@ -47,7 +59,10 @@ class Review extends Component {
                     <input type="text" name="inpBody" value={this.state.inpBody} onChange={this.onChange}></input>
                     <label>Stars</label>
                     <input type="text" name="inpStars" value={this.state.inpStars} onChange={this.onChange}></input>
-                    <button onClick={() => this.props.handleDelete(this.props.id)}>Delete</button>
+                    <button onClick={() => {
+                        this.props.handleDelete(this.props.id)
+                        this.toggleEdit()
+                        }}>Delete</button>
                 <button onClick={() => {
                     this.props.handleEdit(this.state.inpTitle, this.state.inpBody, this.state.inpStars, this.props.id)
                     this.toggleEdit()}}>Submit</button>

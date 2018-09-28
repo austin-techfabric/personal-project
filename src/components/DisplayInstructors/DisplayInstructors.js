@@ -63,8 +63,8 @@ class DisplayInstructors extends Component {
                     <h3>{inst.age}</h3>
                     <h3>{inst.gender}</h3>
                     <h3>Hourly rate: ${inst.price}</h3>
-                    <span>{inst.electric && <p>electric = true</p>}</span>
-                    <span>{inst.acoustic && <p>acoustic = true</p>}</span>
+                    {/* <span>{inst.electric && <p>electric = true</p>}</span>
+                    <span>{inst.acoustic && <p>acoustic = true</p>}</span> */}
                     </div>
                     </Link>
                 </div>

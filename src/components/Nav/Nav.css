@@ -1,5 +1,6 @@
 .Nav {
     width: 100vw;
-    height: 75px;
-    background: tomato;
+    height: 8vh;
+    background: #fff;
+    border-bottom: solid 1px rgb(196, 196, 196)
 }

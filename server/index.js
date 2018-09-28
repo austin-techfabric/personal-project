@@ -10,7 +10,7 @@ const app = express();
 // =====================================   controllers   ============================================= \\
 
 
-// const user_controller = require('./controllers/user_controller');
+const schedule_controller = require('./controllers/schedule_controller');
 const review_controller = require('./controllers/review_controller');
 const display_single_instructor = require('./controllers/display_single_instructor')
 const display_instructors = require('./controllers/display_instructors');
@@ -103,19 +103,24 @@ app.get(`/auth/callback`, (req, res) => {
 massive(process.env.CONNECTION_STRING).then(database => {
     console.log('connected to the DB')
     app.set('db', database)
-    // database.reset();
+    database.reset();
     }).catch(error => console.log( 'massive error' ,error));
-
 
 // =========================================== END POINTS ======================================= \\
 
-
 app.get('/api/instructor_profile/:id', display_single_instructor.get_user_by_id);
+
+// app.get('/api/instructor_schedule/:id', schedule_controller.get_schedule_by_id)
+// app.post('/api/instructor_schedule/', schedule_controller.create )
+// app.put('/api/instructor_schedule/', schedule_controller.update_by_id)
 
 app.get('/api/instructor_reviews/:id', review_controller.get_reviews);
 app.delete('/api/instructor_reviews/:id', review_controller.delete);
 app.put('/api/instructor_reviews/:id', review_controller.edit);
 app.post('/api/instructor_reviews/:id', review_controller.create);
+
+
+
 
 app.post(`/api/instructor_profile`, instructor_profile_controller.create)
 
@@ -132,7 +137,7 @@ app.put('/api/set_instructor', instructor_profile_controller.set_as_instructor);
 
 
 app.get('/api/user-data', (req, res) => {
-    console.log(req.session.user)
+    // console.log(req.session.user)
     res.json(req.session.user);
 });
 

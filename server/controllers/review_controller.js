@@ -41,14 +41,14 @@ module.exports = {
         console.log('create fired in controller')
         const db = req.app.get('db');
         const profile_id = req.params.id;
-        const { title, body, stars, poster_id } = req.body
+        const { title, body, stars, poster_id, dateVal} = req.body
         console.log('create : title =====>', title, 'about ====>', body, 'stars ====>', stars, 'profile_id ====>', profile_id, 'poster_id ====>', poster_id) 
         
         // comp_titles.map(titles => {
 
         //     db.query('SELECT $1 FROM users', ['id']).then(users)
         // })
-        db.create_post([poster_id, profile_id, title, body, stars])
+        db.create_post([poster_id, profile_id, title, body, stars, dateVal])
         .then(reviews => {
             console.log(reviews)
             res.status(200).send(reviews)

@@ -70,11 +70,11 @@ export default function instructor_reducer(state = initialState, action) {
     }
 } 
 
-export function submitHandler(age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, zipcode, address, city, state, country, id) {
-    // console.log(age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, zipcode, address, city, state, country, id);
+export function submitHandler(age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id) {
+    console.log(age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id);
     return {
         type: SUBMIT_HANDLER,
-        payload: axios.post(`/api/instructor_profile/`, {age, gender, price, imgUrl, about, yearsTeaching, acoustic, electric, zipcode, address, city, state, country, id})
+        payload: axios.post(`/api/instructor_profile/`, {age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id})
         .then(response => {return response.data})
         .catch(err => console.log('err', err))
     }
@@ -101,7 +101,7 @@ export function setComplete(id) {
 }
 
 export function getInstructors() {
-    console.log('getInstructors fired!')
+    // console.log('getInstructors fired!')
     return {
         type: GET_INSTRUCTORS,
         payload: axios.get('/api/instructors')
@@ -154,7 +154,7 @@ export function editReviews(reviews) {
     }
 }
 export function createReview(reviews) {
-    console.log('createReview in reducer', reviews)
+    // console.log('createReview in reducer', reviews)
     return {
         type: EDIT_REVIEWS,
         payload: {reviews}

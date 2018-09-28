@@ -52,7 +52,7 @@ class Nav extends Component {
 
 const mapStateToProps = state => {
   const { user, isLoading } = state.instructor_reducer;
-//   console.log(user)
+  console.log(user)
   return { user, isLoading }
 }
 
