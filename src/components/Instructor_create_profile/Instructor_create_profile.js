@@ -36,103 +36,55 @@ class Instructor_create_profile extends Component {
           }
           this.onChange = this.onChange.bind(this)
         }
-
-        onSubmit (e) {
-        e.preventDefault();
-         
-
+        handleInst = () => {
           this.setState((prevState, prevProps) => {
+            let teachingSince = ''
+            teachingSince = this.state.month + this.state.year
             let instruments = ''
-            // console.log('zguitar', this.state.guitar)
             if(this.state.guitar){
                 instruments += 'guitar '
             }
-            // console.log('bass', this.state.bass)
             if(this.state.bass){
               instruments += 'bass '
             }
-            // console.log('ukulele', this.state.ukulele)
             if(this.state.ukulele){
               instruments += 'ukulele '
             }
-            console.log('instruments',instruments)
+            // console.log('instruments',instruments)
             return {
-              instruments: instruments
+              instruments: instruments, teachingSince
             }
           })
-
-
-        
-        console.log('instrumet =====>', this.state.instruments)
-
-        this.setState({teachingSince: this.state.month + this.state.year})
-         
-        const profile = { 
-            age: this.state.age,
-            gender:this.state.gender,
-            locationType: this.state.locationType,
-            zipcode: this.state.zipcode,
-            address: this.state.address,
-            city: this.state.city,
-            state: this.state.state,
-            country: this.state.country,
-            price: this.state.price,
-            instruments: this.state.instruments,
-            styles: this.state.styles,
-            skillLevel: this.state.skillLevel,
-            teachingSince: this.state.teachingSince,
-            about: this.state.about,
-            education: this.state.education,
-        }  
+        }
+        onSubmit (e) {
+        e.preventDefault();      
     }
     
     onChange(e) {
-      console.log(e.target.name, e.target.value)
+      // console.log(e.target.name, e.target.value)
       this.setState({[e.target.name]: e.target.value});
       
     }
     guitHandler = () => {
       this.setState({guitar: !this.state.guitar})
-      // console.log(this.state.guitar)
     }
     bassHandler = () => {
       this.setState({bass: !this.state.bass})
-      // console.log(this.state.bass)
     }
     ukeHandler = () => {
       this.setState({ukulele: !this.state.ukulele})
-      // console.log(this.state.ukulele)
     }
 
       render() {
-        // console.log(this.state.age)
-        // console.log(this.state.gender)
-        // console.log(this.state.locationType)
-        // console.log(this.state.zipcode)
-        // console.log(this.state.address)
-        // console.log(this.state.city)
-        // console.log(this.state.state)
-        // console.log(this.state.country)
-        // console.log(this.state.price)
-        // console.log(this.state.instruments)
-        // console.log(this.state.styles)
-        // console.log(this.state.teachingSince)
-        // console.log(this.state.skillLevel)
-        // console.log(this.state.about)
-        // console.log(this.state.education)
-        // console.log(this.state.guitar)
-        // console.log(this.state.ukulele)
-        // console.log(this.state.bass)
-
-
         console.log(' this.props.user --------->', this.props.user)
+        console.log(' this.props.instruments --------->', this.state.instruments)
      
         const { user, submitHandler, setComplete } = this.props
         const { age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education} = this.state
-        console.log(this.state.instruments)
-        
-        const { id } = user
-        console.log('idididididid', id)
+        const data = this.props.user.length > 0 ? this.props.user[0]: {}
+        // console.log('data', data)
+        const { id } = data
+        // console.log('idididididid', id)
         return (
           <div>
           {
@@ -226,7 +178,7 @@ class Instructor_create_profile extends Component {
           <input type="text" name="country" value={country} onChange={this.onChange} />
 
 
-              <button id="firstButton" onClick={() => jump('.second')}>First</button>
+              <button id="firstButton" onClick={() => jump('.second')}>Next</button>
             </div>
             <div className='second'>
             <h1>Info</h1>
@@ -326,16 +278,23 @@ class Instructor_create_profile extends Component {
           <label htmlFor="education">Education: </label>
           <input type="text" name="education" onChange={this.onChange} />
 
-                <button id="secondButton" onClick={() => jump('.third')}>Second</button>
+                <button id="secondButton" onClick={() => {
+                  this.handleInst()
+                  jump('.first')
+
+                }}
+                >Back</button>
+                <button id="secondButton" onClick={() => {
+                  this.handleInst()
+                  jump('.third')
+
+                }}
+                >Next</button>
             
             
             </div>
             <div className='third'>
 
-          {/* <Link to="/dashboard"><button type="submit" onClick={() => {
-            setComplete(id)
-            submitHandler(age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id)
-            }}>Submit</button></Link> */}
                     
                     
                     <h1>Review</h1>
@@ -347,8 +306,8 @@ class Instructor_create_profile extends Component {
                     <p>City: {this.state.city}</p>
                     <p>State: {this.state.state}</p>
                     <p>Country: {this.state.country}</p>
-                    <p>Price: {this.state.price}</p>
-                    <p>Instruments: {this.state.instruments}</p>
+                    <p>Price: ${this.state.price}/hr</p>
+                    <p>Instruments: {this.state.guitar ? ' Guitar ' : null}{this.state.bass ? ' Bass ' : null}{this.state.ukulele ? ' Ukulele ' : null}</p>
                     <p>Genres: {this.state.styles}</p>
                     <p>Skill Level: {this.state.skillLevel}</p>
                     <p>Teaching Since: {this.state.teachingSince}</p>
@@ -357,13 +316,12 @@ class Instructor_create_profile extends Component {
 
 
 
-                  <button type="submit" onClick={() => {
-            setComplete(id)
-            submitHandler(age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id)
-            }}>Submit</button>
+               <Link to="/instructor_create_schedule"><button type="submit" onClick={() => {
+                setComplete(id)
+                submitHandler(age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id)
+                }}>Submit</button></Link>
 
-
-            <button id="thirdButton" onClick={() => jump('.first')} >Third</button>
+            <button id="thirdButton" onClick={() => jump('.second')} >Back</button>
             </div>
  
 

@@ -1,1 +1,1 @@
-select * from schedule where instructor_id = $1
+select * from schedule where instructor_id = $1;

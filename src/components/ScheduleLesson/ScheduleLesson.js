@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getSchedule } from './../../redux/reducer';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-
-export default class componentName extends Component {
+class ScheduleLesson extends Component {
     constructor () {
         super();
         this.state ={ 
@@ -9,24 +12,46 @@ export default class componentName extends Component {
         }
         
     }
+    
+    componentDidMount() {
+        this.props.getSchedule(this.props.match.params.id)
+    }
+
     toggleView = () => {
-        this.setState({toggleAval: !toggleAval})
+        this.setState({toggleAval: !this.state.toggleAval})
     }
 
     render() {
+        console.log('schedule', this.props.schedule)
+        const data = this.props.instructor.length > 0 ? this.props.instructor[0]: {}
+        const newSchedule = this.props.schedule.length > 0 ? this.props.schedule[0]: {}
+        console.log('data' , data)
+        let desUser = this.props.user.length ? this.props.user[0]: {}
         return (
             <div>
-                {/*  */}
                 <div>
-                    <h1>{/* this.props.name */}</h1>
-                    <h1>{/* instrument (dropdown?) */}</h1>
-                    <p>Select a Lesson Location</p>
-                    <h1>{/* lesson location (dropdown) in house lesson vs instructor location*/}</h1>
+                    <h1>Your Request to {data.name}</h1>
+                    <img src={data.picture_url} />
+                    <label>Instrument</label>
+                    <select>
+                        <option>guitar</option>
+                        <option>bass</option>
+                        <option>ukulele</option>
+                    </select>
+                    <label>Select a Lesson Location</label>
+                    <select>
+                        <option>Teacher's {data.locationtype} ({data.address})</option>
+                        <option>Your home</option>
+                    </select>
+                    
+                    <select>
+                        <option> ${data.price * 0.5} / 30 min</option>
+                        <option> ${data.price} / 60 min </option>
+                        <option> ${data.price * 1.4} / 90 min</option>
+                    </select>
                     <button>Availability</button>
-                    <button onClick={this.toggleView}>Pricing</button>
-                    { toggleAval ?
+                    { this.state.toggleAval ?
                         <div>
-                            {/* onClick days, onclick display the times for that day of the week */}
                             <p>Su</p>
                             <p>Mo</p>
                             <p>Tu</p>
@@ -45,3 +70,17 @@ export default class componentName extends Component {
         )
     }
 }
+
+
+
+const mapStateToProps = initState => {
+    const { user, instructor, schedule } = initState.instructor_reducer;
+    return { user, instructor, schedule }
+  }
+  
+  const mapDispatchToProps = {
+    getSchedule,
+  };
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScheduleLesson)

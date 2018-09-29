@@ -13,6 +13,7 @@
 .first>h1, .second>h1, .third>h1 {
     font-size: 2em;
     margin-bottom: 50px; 
+    font-weight: 500;
 }
 /* text align left target label */
 .first>label, .first>input, .first>select, .second>label, .second>input, .second>select, .second>textarea {

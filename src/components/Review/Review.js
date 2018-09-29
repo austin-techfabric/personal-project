@@ -17,9 +17,16 @@ class Review extends Component {
         this.toggleEdit = this.toggleEdit.bind(this)
         this.onChange = this.onChange.bind(this)
     }
+    
     toggleEdit = () => {
-        this.setState({toggleValue: !this.state.toggleValue})
-    }
+        this.setState((prevState) =>{
+        //  console.log('prevstate', prevState)
+            return {
+                toggleValue: !prevState.toggleValue,
+            }
+         })
+     }
+ 
     onChange(e) {
         console.log(e.target.name, e.target.value)
         this.setState({[e.target.name]: e.target.value});
@@ -31,8 +38,8 @@ class Review extends Component {
     render() {
         const {user, poster} = this.props;
         
-        console.log(user)
-        console.log(poster)
+        // console.log(user)
+        // console.log(poster)
         // console.log(req.session.user)
         return (
             <div className='review-wrapper'>

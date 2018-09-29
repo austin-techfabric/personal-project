@@ -6,6 +6,7 @@ const initialState = {
     instructors: [],
     instructor_profile: [],
     isLoading: false,
+    schedule:[],
     reviews: []
 }
 
@@ -19,6 +20,8 @@ const UPDATE_USER_INFO = 'UPDATE_USER_INFO';
 const DELETE_REVIEWS = 'DELETE_REVIEWS';
 const EDIT_REVIEWS = 'EDIT_REVIEWS';
 const CREATE_REVIEW = 'CREATE_REVIEW';
+const CREATE_SCHEDULE = 'CREATE_SCHEDULE';
+const GET_SCHEDULE = 'GET_SCHEDULE';
 
 export default function instructor_reducer(state = initialState, action) {
 
@@ -51,10 +54,21 @@ export default function instructor_reducer(state = initialState, action) {
         case `${GET_REVIEWS}_FULFILLED`:
             return Object.assign({}, state, {reviews:action.payload})
 
+        case `${GET_SCHEDULE}_PENDING`:
+            return {...state }
+        case `${GET_SCHEDULE}_FULFILLED`:
+            return Object.assign({}, state, {schedule:action.payload})
+
         case `${SUBMIT_HANDLER}_PENDING`:
             return {...state, isLoading: true}
         case `${SUBMIT_HANDLER}_FULFILLED`:
             return {...state, instructor_profile:action.payload, isLoading: false}
+
+        case `${CREATE_SCHEDULE}_PENDING`:
+            return {...state, isLoading: true}
+        case `${CREATE_SCHEDULE}_FULFILLED`:
+            return {...state, isLoading: true}
+        
 
         case `${SET_INSTRUCTOR}_PENDING`:
             return {...state, isLoading: true}
@@ -71,11 +85,14 @@ export default function instructor_reducer(state = initialState, action) {
 } 
 
 export function submitHandler(age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id) {
-    console.log(age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id);
+    console.log('REDUCER ~~~~~~~~~~ age -->', age, 'gender -->', gender, 'locationType -->', locationType, 'zipcode -->', zipcode, 'address -->', address, 'city -->', city, 'state -->', state, 'country -->', country,  'price -->', price, 'instrument -->',  instruments, 'styles -->', styles, 'skilllevel -->', skillLevel, 'teachingSince -->', teachingSince, 'about -->', about, 'education -->', education, 'id -->', id);
     return {
         type: SUBMIT_HANDLER,
         payload: axios.post(`/api/instructor_profile/`, {age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id})
-        .then(response => {return response.data})
+        .then(response => {
+            console.log('REDUCER!! response.data', response.data)
+            return response.data
+        })
         .catch(err => console.log('err', err))
     }
 }
@@ -99,7 +116,6 @@ export function setComplete(id) {
         }).catch(err => console.log('err', err))
     }
 }
-
 export function getInstructors() {
     // console.log('getInstructors fired!')
     return {
@@ -127,7 +143,6 @@ export function getSingleInstructor(id) {
         .catch(err => console.log('getSingleInstructors error ---->', err))
     }
 }
-
 export function getReviews(id) {
     // console.log('getReviews id -------> ', id)
     return {
@@ -140,7 +155,6 @@ export function getReviews(id) {
         .catch(err => console.log('getReviews error ---->', err))
     }
 }
-
 export function deleteReviews(reviews) {
     return {
         type: DELETE_REVIEWS,
@@ -160,6 +174,28 @@ export function createReview(reviews) {
         payload: {reviews}
     }
 }
+export function createSchedule(holidays, sunstart, sunend, monstart, monend, tuestart, tueend, wedstart, wedend, thurstart, thurend, fristart, friend, satstart, satend, instructor_id) {
+    console.log('createSchedule in reducer, arguments', holidays, sunstart, sunend, monstart, monend, tuestart, tueend, wedstart, wedend, thurstart, thurend, fristart, friend, satstart, satend, instructor_id)
+    return {
+        type: CREATE_SCHEDULE,
+        payload: axios.post(`/api/instructor_create_schedule/`, {holidays, sunstart, sunend, monstart, monend, tuestart, tueend, wedstart, wedend, thurstart, thurend, fristart, friend, satstart, satend, instructor_id})
+        .then(response => {
+            console.log('REDUCER!! response.data', response.data)
+            return response.data
+        })
+        .catch(err => console.log('err', err))
+    }
+}
 
-
-
+export function getSchedule(id) {
+    // console.log('getReviews id -------> ', id)
+    return {
+        type: GET_SCHEDULE,
+        payload: axios.get(`/api/instructor_schedule/${id}`)
+        .then(response => {
+            console.log('getSchedule ====>', response.data)
+            return response.data
+        })
+        .catch(err => console.log('getReviews error ---->', err))
+    }
+}

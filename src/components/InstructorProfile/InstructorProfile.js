@@ -23,13 +23,14 @@ import Review from './../Review/Review';
     componentDidMount() {
         this.props.getReviews(this.props.match.params.id)
     }
-
+    
+    
     toggleEdit = () => {
-       this.setState({
-           toggleValue: !this.state.toggleValue,
-            inpTitle: '',    
-            inpBody: '',    
-            inpStars: ''    
+       this.setState((prevState) =>{
+        console.log('prevstate', prevState)
+           return {
+               toggleValue: !prevState.toggleValue,
+           }
         })
     }
 
@@ -49,11 +50,9 @@ import Review from './../Review/Review';
         })
         .catch(error => console.log('handleDelete', error))
     }
-
-handleSubmit = (e) => {this.refs.form.reset()}
-
-
-    createReview = (title, body, stars, poster_id) => {
+    handleSubmit = (e) => {this.refs.form.reset()}
+    createReview = (title, body, stars, poster_id, e) => {
+        e.preventDefault();
         let date = new Date();
         let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
         let dateVal = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
@@ -65,19 +64,17 @@ handleSubmit = (e) => {this.refs.form.reset()}
         axios.post(`/api/instructor_reviews/${this.props.match.params.id}`, {title, body, stars, poster_id, dateVal})
         .then(response => {
             console.log('createReview response.data ======>', response.data)
+            this.toggleEdit()
             this.props.createReview(response.data)
         })
         .catch(error => console.log('handleDelete', error))
         
-        this.setState({toggleValue: !this.state.toggleValue})
+       
     }
-
-
     onChange(e) {
         console.log(e.target.name, e.target.value)
         this.setState({[e.target.name]: e.target.value});
     }
-
 
     render() {
         const data = this.props.instructor.length > 0 ? this.props.instructor[0]: {}
@@ -85,17 +82,17 @@ handleSubmit = (e) => {this.refs.form.reset()}
         // console.log('this.props.user', this.props.user)
 
 
-        // let reviews = this.props.reviews.length > 0 ? this.props.reviews[0]: {}
+        let desUser = this.props.user.length ? this.props.user[0]: {}
         const { reviews } = this.props
         const reviewList = reviews
 
-        console.log('data ====]>', data)
+        // console.log('data ====]>', data)
 
         const renderReviews = reviewList.map((review, index) => {
             return (
                 <Review 
                 poster={review.poster_id}
-                user={this.props.user}
+                user={desUser}
                 key={index} 
                 title={review.title}
                 body={review.body}
@@ -107,7 +104,7 @@ handleSubmit = (e) => {this.refs.form.reset()}
                 />
             )
         })
-
+        console.log(this.props.user, this.state.toggleValue);
         return (
             <div>
                 <Link to="/display_instructors"><button>Back</button></Link>
@@ -115,8 +112,10 @@ handleSubmit = (e) => {this.refs.form.reset()}
                 <h1>{data.name}</h1>
                 <h1>Hourly Rate: ${data.price}</h1>
                 <h1>About: {data.about}</h1>
+                
                 <div>
                     { this.props.user ? <div>
+                        <Link to={`/create_lesson/${this.props.match.params.id}`}><button>Contact {data.name}</button></Link>
                 { this.state.toggleValue 
                 ? 
                 <div>
@@ -127,14 +126,14 @@ handleSubmit = (e) => {this.refs.form.reset()}
                     <input type="text" name="inpBody" value={this.state.inpBody} onChange={this.onChange}></input>
                     <label>Stars</label>
                     <input type="text" name="inpStars" value={this.state.inpStars} onChange={this.onChange}></input>
-                    <button type="submit" onClick={() => this.createReview(this.state.inpTitle, this.state.inpBody, this.state.inpStars, this.props.user.id)}>Submit</button>
+                    <button type="submit" onClick={(e) => this.createReview(this.state.inpTitle, this.state.inpBody, this.state.inpStars, desUser.id, e)}>Submit</button>
                     <button type="button" onClick={() => this.toggleEdit()}>Cancel</button>
                     </form>
                 </div>
                 : <button onClick={() => this.toggleEdit()}>write a review</button>
                 }</div> : <p>Please log in to leave a review</p>
-                }
-                       {renderReviews}                 
+                }       
+                {renderReviews} 
                 </div>
                 
             </div>
@@ -152,7 +151,7 @@ const mapStateToProps = initState => {
     getReviews,
     deleteReviews,
     editReviews,
-    createReview
+    createReview,
   };
 
 

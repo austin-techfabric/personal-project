@@ -25,23 +25,6 @@ module.exports = {
         .catch((error) => {console.log('error in set_complete', error)})
     },
 
-        // age,	
-        // gender,     
-        // locationType,       
-        // zipcode,    
-        // address,    
-        // city,   
-        // state,      
-        // country,
-        // price,    
-        // instruments,      
-        // styles,     
-        // skillLevel,    
-        // teachingSince,    
-        // about,    
-        // education  
-        // instructor_id,      
-
     create: (req, res) => {
         console.log('Create instructor profile fired!')
         const db = req.app.get('db')
@@ -63,11 +46,10 @@ module.exports = {
             education,  
             id, 
         } = req.body;
-        console.log(JSON.stringify(instruments))
-        console.log(age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id)
-        db.create_instructor_profile_by_id([age, gender, locationType, zipcode, address, city, state, country, price, {instruments}, {styles}, skillLevel, teachingSince, about, education, id])
+        console.log('CONTROLLER ~~~~~~~~~~ age -->', age, 'gender -->', gender, 'locationType -->', locationType, 'zipcode -->', zipcode, 'address -->', address, 'city -->', city, 'state -->', state, 'country -->', country,  'price -->', price, 'instrument -->',  instruments, 'styles -->', styles, 'skilllevel -->', skillLevel, 'teachingSince -->', teachingSince, 'about -->', about, 'education -->', education, 'id -->', id);
+        db.create_instructor_profile_by_id([age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id])
         .then((instructorProfile) => {
-            // console.log(instructorProfile)
+            console.log('CONTROLLER!! instructorProfile', instructorProfile)
             res.status(204).send(instructorProfile)})
         .catch((error) => {console.log('error in create : instructor_profile_profile', error)})
     }

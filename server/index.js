@@ -10,6 +10,7 @@ const app = express();
 // =====================================   controllers   ============================================= \\
 
 
+// const lesson_controller = require('./controllers/lessson_controller');
 const schedule_controller = require('./controllers/schedule_controller');
 const review_controller = require('./controllers/review_controller');
 const display_single_instructor = require('./controllers/display_single_instructor')
@@ -119,7 +120,9 @@ app.delete('/api/instructor_reviews/:id', review_controller.delete);
 app.put('/api/instructor_reviews/:id', review_controller.edit);
 app.post('/api/instructor_reviews/:id', review_controller.create);
 
-
+app.get('/api/instructor_schedule/:id', schedule_controller.get_schedule_by_id)
+app.post('/api/instructor_create_schedule', schedule_controller.create)
+// app.put('/api/instructor_create_schedule/:id', schedule_controller.update_by_id)
 
 
 app.post(`/api/instructor_profile`, instructor_profile_controller.create)
