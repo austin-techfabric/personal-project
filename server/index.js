@@ -10,13 +10,12 @@ const app = express();
 // =====================================   controllers   ============================================= \\
 
 
-// const lesson_controller = require('./controllers/lessson_controller');
 const schedule_controller = require('./controllers/schedule_controller');
 const review_controller = require('./controllers/review_controller');
 const display_single_instructor = require('./controllers/display_single_instructor')
 const display_instructors = require('./controllers/display_instructors');
 const instructor_profile_controller = require('./controllers/instructor_profile_controller');
-
+const lesson_controller = require('./controllers/lesson_controller')
 
 
 // =====================================   Middlewares    =============================================== \\
@@ -111,9 +110,6 @@ massive(process.env.CONNECTION_STRING).then(database => {
 
 app.get('/api/instructor_profile/:id', display_single_instructor.get_user_by_id);
 
-// app.get('/api/instructor_schedule/:id', schedule_controller.get_schedule_by_id)
-// app.post('/api/instructor_schedule/', schedule_controller.create )
-// app.put('/api/instructor_schedule/', schedule_controller.update_by_id)
 
 app.get('/api/instructor_reviews/:id', review_controller.get_reviews);
 app.delete('/api/instructor_reviews/:id', review_controller.delete);
@@ -124,6 +120,9 @@ app.get('/api/instructor_schedule/:id', schedule_controller.get_schedule_by_id)
 app.post('/api/instructor_create_schedule', schedule_controller.create)
 // app.put('/api/instructor_create_schedule/:id', schedule_controller.update_by_id)
 
+app.post('/api/create_lesson/:id', lesson_controller.create)
+// app.get('/api/create_lesson/:id', lesson_controller.create)
+// app.post('')
 
 app.post(`/api/instructor_profile`, instructor_profile_controller.create)
 

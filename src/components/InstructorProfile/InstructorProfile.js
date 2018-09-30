@@ -23,8 +23,6 @@ import Review from './../Review/Review';
     componentDidMount() {
         this.props.getReviews(this.props.match.params.id)
     }
-    
-    
     toggleEdit = () => {
        this.setState((prevState) =>{
         console.log('prevstate', prevState)
@@ -33,7 +31,6 @@ import Review from './../Review/Review';
            }
         })
     }
-
     handleDelete = (deletedId) => {
         console.log('CLICKED', deletedId)
         axios.delete(`/api/instructor_reviews/${this.props.match.params.id}?deletedId=${deletedId}`)
@@ -104,7 +101,6 @@ import Review from './../Review/Review';
                 />
             )
         })
-        console.log(this.props.user, this.state.toggleValue);
         return (
             <div>
                 <Link to="/display_instructors"><button>Back</button></Link>

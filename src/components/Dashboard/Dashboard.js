@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getLessons } from './../../redux/reducer';
 
 class Dashboard extends Component {
     constructor() {
@@ -8,6 +9,10 @@ class Dashboard extends Component {
         this.state = {
         }
     }
+
+  componentDidMount() {
+  
+  }
   render() {
     console.log(this.props.user)
     const desUser = this.props.user.length > 0 ? this.props.user[0]: {}
@@ -27,6 +32,9 @@ const mapStateToProps = state => {
   console.log(user)
   return { user, isLoading }
 }
+const mapDispatchToProps = {
+  getLessons
+};
 
 
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

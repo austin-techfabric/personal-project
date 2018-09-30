@@ -7,7 +7,8 @@ const initialState = {
     instructor_profile: [],
     isLoading: false,
     schedule:[],
-    reviews: []
+    reviews: [],
+    lessons: []
 }
 
 const SUBMIT_HANDLER = 'SUBMIT_HANDLER';
@@ -22,6 +23,8 @@ const EDIT_REVIEWS = 'EDIT_REVIEWS';
 const CREATE_REVIEW = 'CREATE_REVIEW';
 const CREATE_SCHEDULE = 'CREATE_SCHEDULE';
 const GET_SCHEDULE = 'GET_SCHEDULE';
+const CREATE_LESSON = 'CREATE_LESSON';
+const GET_LESSONS = 'GET_LESSONS';
 
 export default function instructor_reducer(state = initialState, action) {
 
@@ -39,6 +42,9 @@ export default function instructor_reducer(state = initialState, action) {
         case CREATE_REVIEW:
         return Object.assign({}, state, action.payload)
 
+        case CREATE_LESSON:
+        return Object.assign({}, state, action.payload)
+
         case `${GET_INSTRUCTORS}_PENDING`:
             return {...state, isLoading: true}
         case `${GET_INSTRUCTORS}_FULFILLED`:
@@ -53,6 +59,11 @@ export default function instructor_reducer(state = initialState, action) {
             return {...state }
         case `${GET_REVIEWS}_FULFILLED`:
             return Object.assign({}, state, {reviews:action.payload})
+
+        case `${GET_LESSONS}_PENDING`:
+            return {...state }
+        case `${GET_LESSONS}_FULFILLED`:
+            return Object.assign({}, state, {lessons:action.payload})
 
         case `${GET_SCHEDULE}_PENDING`:
             return {...state }
@@ -155,6 +166,18 @@ export function getReviews(id) {
         .catch(err => console.log('getReviews error ---->', err))
     }
 }
+export function getLessons(id) {
+    // console.log('getReviews id -------> ', id)
+    return {
+        type: GET_LESSONS,
+        payload: axios.get(`/api/lessons/${id}`)
+        .then(response => {
+            console.log('getReviews ====>', response)
+            return response.data
+        })
+        .catch(err => console.log('getReviews error ---->', err))
+    }
+}
 export function deleteReviews(reviews) {
     return {
         type: DELETE_REVIEWS,
@@ -174,6 +197,13 @@ export function createReview(reviews) {
         payload: {reviews}
     }
 }
+export function createLesson(lessons) {
+    console.log('createReview in reducer', lessons)
+    return {
+        type: CREATE_LESSON,
+        payload: {lessons}
+    }
+}
 export function createSchedule(holidays, sunstart, sunend, monstart, monend, tuestart, tueend, wedstart, wedend, thurstart, thurend, fristart, friend, satstart, satend, instructor_id) {
     console.log('createSchedule in reducer, arguments', holidays, sunstart, sunend, monstart, monend, tuestart, tueend, wedstart, wedend, thurstart, thurend, fristart, friend, satstart, satend, instructor_id)
     return {
@@ -186,7 +216,6 @@ export function createSchedule(holidays, sunstart, sunend, monstart, monend, tue
         .catch(err => console.log('err', err))
     }
 }
-
 export function getSchedule(id) {
     // console.log('getReviews id -------> ', id)
     return {
