@@ -13,7 +13,7 @@ import ScheduleLesson from './components/ScheduleLesson/ScheduleLesson';
 export default (
     <Switch>
     
-    <Route path="/dashboard" component={Dashboard} />
+    <Route path="/dashboard/:id" component={Dashboard} />
     <Route path="/about" component={About} />
     
     <Route path="/create_lesson/:id" component={ScheduleLesson} />

@@ -16,7 +16,7 @@ class LearnOrTeach extends Component {
         this.props.history.push("/instructor_create_profile");
     }
     studentHandler = () => {
-        this.props.history.push("/dashboard");
+        this.props.history.push(`/dashboard/${this.props.user[0].id}`);
     }
     render() {
         // console.log(this.props.user[0])

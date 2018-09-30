@@ -62,13 +62,13 @@ app.get(`/auth/callback`, (req, res) => {
                     console.log(' instructor = true conditional reached')
                     if(users.profileComplete) {
                         console.log('profileComplete nested if statement fired')
-                        res.redirect('/dashboard');
+                        res.redirect('/dashboard/');
                     } else {
                         console.log('Instructor create profile reached')
                         res.redirect('/instructor_create_profile'); 
                     }
                 } else {
-                    res.redirect('/dashboard');
+                    res.redirect(`/dashboard/${req.session.user.id}`);
                 }
             } else {
                 console.log('user not found, creating');
@@ -111,6 +111,7 @@ massive(process.env.CONNECTION_STRING).then(database => {
 app.get('/api/instructor_profile/:id', display_single_instructor.get_user_by_id);
 
 
+
 app.get('/api/instructor_reviews/:id', review_controller.get_reviews);
 app.delete('/api/instructor_reviews/:id', review_controller.delete);
 app.put('/api/instructor_reviews/:id', review_controller.edit);
@@ -121,7 +122,7 @@ app.post('/api/instructor_create_schedule', schedule_controller.create)
 // app.put('/api/instructor_create_schedule/:id', schedule_controller.update_by_id)
 
 app.post('/api/create_lesson/:id', lesson_controller.create)
-// app.get('/api/create_lesson/:id', lesson_controller.create)
+app.get('/api/lessons/:id', lesson_controller.get_lesson)
 // app.post('')
 
 app.post(`/api/instructor_profile`, instructor_profile_controller.create)

@@ -154,7 +154,7 @@ class CreateSchedule extends Component {
                 </div>
                 </div>
                 { this.state.doneToggle ?
-                <Link to='/dashboard'><button type="submit">Submit</button></Link> 
+                <Link to={`/dashboard/${data.id}`}><button type="submit">Submit</button></Link> 
                 : <button type='button' onClick={() => {
                     this.doneHandler()
                     this.prep()

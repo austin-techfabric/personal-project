@@ -5,12 +5,11 @@ module.exports = {
         // console.log(req.params)
         const { id } = req.params;
         // console.log('get_reviews id =====>', id)
-        db.get_lesson([id])
+        db.get_lesson_as_student([id])
         .then(reviews => res.status(200).send(reviews))
         .catch(error => console.log('error in get_reviews ===> ', error))
     },
 
-    
     
     delete: (req, res) => {
         console.log('delete fired in controller')

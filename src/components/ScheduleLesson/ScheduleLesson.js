@@ -44,7 +44,7 @@ class ScheduleLesson extends Component {
         axios.post(`/api/create_lesson/${this.props.match.params.id}`, {student_id, lessonLocation, instrument, duration, dateval})
         .then(response => {
             console.log('createLesson response.data ======>', response.data)
-            this.props.history.push('/dashboard')
+            this.props.history.push(`/dashboard/${student_id}`)
         })
         .catch(error => console.log('createLesson frontend ==== ', error))
     }

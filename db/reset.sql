@@ -44,11 +44,13 @@ create table reviews (
     stars integer not null,
     dateval text
 );
+
+
 create table lessons (
     id serial primary key,
     student_id integer references users(id),	
     instructor_id integer references instructor_profile(id),	
-    lessonLocation varchar(30),
+    lessonLocation text,
     instrument text,
     duration integer,
     dateval text

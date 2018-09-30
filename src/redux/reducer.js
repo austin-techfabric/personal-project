@@ -172,7 +172,7 @@ export function getLessons(id) {
         type: GET_LESSONS,
         payload: axios.get(`/api/lessons/${id}`)
         .then(response => {
-            console.log('getReviews ====>', response)
+            console.log('getLessons ====>', response.data)
             return response.data
         })
         .catch(err => console.log('getReviews error ---->', err))
