@@ -1,0 +1,77 @@
+.inst-parent-wrapper {
+  margin-top: 47px;
+  padding: 10px 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.inst-parent-wrapper a {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+}
+
+.instContainer {
+  border-bottom: #999 solid 1px;
+  background: #F9F9F9;
+  width: 100%;
+  height: 40%;
+}
+
+.instContainer .imgBox {
+  position: relative;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  display: inline-block;
+}
+
+.instContainer img {
+  height: 100%;
+  width: 100%;
+}
+
+.instWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+.fit {
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+  padding-bottom: 22px;
+  border-bottom: #999 1px solid;
+  font-weight: 700;
+  font-size: 1.4em;
+}
+
+.displayInfo {
+  padding-left: 10%;
+  padding-top: 10%;
+  color: #333;
+  text-align: left;
+}
+
+.displayInfo h1 {
+  font-weight: 500;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.displayInfo h2 {
+  font-size: 1em;
+  margin-bottom: 7px;
+}
+
+.displayInfo h3 {
+  font-size: 1em;
+  font-weight: 500;
+}
+/*# sourceMappingURL=display_instructors.css.map */

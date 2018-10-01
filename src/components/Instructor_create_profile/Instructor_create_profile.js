@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { submitHandler, setComplete, updateUser } from '../../redux/reducer';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './inst.css'
 
+import './instructor_create_profile.css'
 import jump from 'jump.js';
 
 
@@ -86,7 +86,7 @@ class Instructor_create_profile extends Component {
         const { id } = data
         // console.log('idididididid', id)
         return (
-          <div>
+          <div className='create-instructor-parent'>
           {
             user
             ?
@@ -95,31 +95,43 @@ class Instructor_create_profile extends Component {
             <form onSubmit={(e) => this.onSubmit(e)}> 
             <div className='first'>
               <h1>Welcome, {user.name}</h1>
-           
+           <div>
               <label>Age: </label>
               <input type="text" name="age" required value={age || ''} onChange={this.onChange} />
+           </div>
 
+            <div> 
               <label>Gender: </label>
               <select name='gender' onChange={this.onChange}>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
+            </div>
 
-
+            <div>
               <label>Location Type: </label>
                 <select name='locationType' onChange={this.onChange}>
                   <option value='studio'>Studio</option>
                   <option value='home'>Home</option>
                 </select>
+            </div>
 
-          <label htmlFor="zipcode">zipcode: </label>
-          <input type="text" name="zipcode" value={zipcode} onChange={this.onChange} />
+            <div>
+              <label htmlFor="zipcode">zipcode: </label>
+              <input type="text" name="zipcode" value={zipcode} onChange={this.onChange} />
+            </div>
+            <div>
 
           <label htmlFor="address">address: </label>
           <input type="text" name="address" value={address} onChange={this.onChange} />
+            </div>
+            <div>
+
           <label htmlFor="city">city: </label>
           <input type="text" name="city" value={city} onChange={this.onChange} />
-          <br />
+            </div>
+            <div>
+
           <label htmlFor="state">state: </label>
           <select name='state' onChange={this.onChange}>
             <option value='--'>--</option>
@@ -174,26 +186,40 @@ class Instructor_create_profile extends Component {
             <option value='WI'>WI</option>
             <option value='WY'>WY</option>
           </select>
+            </div>
+            <div>
           <label htmlFor="country">country: </label>
           <input type="text" name="country" value={country} onChange={this.onChange} />
-
+            </div>
 
               <button id="firstButton" onClick={() => jump('.second')}>Next</button>
+
             </div>
+            {/* --------------------------------------- SECOND SECTION ------------------------------------- */}
             <div className='second'>
             <h1>Info</h1>
+
+          <div>
           <label htmlFor="price">price: </label>
           <input type="text" name="price" value={price || ''} onChange={this.onChange} ></input>
+            </div>  
 
+            <div>
           <label htmlFor="instruments">instruments: </label>
           <div className='inst-wrapper'>
             <div className={this.state.guitar ? 'does' : 'doesnt'} onClick={() => this.guitHandler()}>Guitar</div>
             <div className={this.state.bass ? 'does' : 'doesnt'} onClick={() => this.bassHandler()}>Bass</div>
             <div className={this.state.ukulele ? 'does' : 'doesnt'} onClick={() => this.ukeHandler()}>Ukulele</div>
           </div>
+            </div>
+
+            <div>
 
           <label htmlFor="styles">Genres: </label>
           <input type="text" name="styles" onChange={this.onChange} />
+            </div>
+            
+            <div>
 
           <label>Skill Level: </label>
                 <select name='skillLevel' onChange={this.onChange}>
@@ -201,6 +227,9 @@ class Instructor_create_profile extends Component {
                   <option value='beginner, intermediate'>Intermediate</option>
                   <option value='beginner, intermediate, advanced'>Advanced</option>
                 </select>
+            </div>
+
+            <div>
 
           <label htmlFor="teachingStyle">Teaching since: </label>
           <select name='month' onChange={this.onChange}>
@@ -271,13 +300,18 @@ class Instructor_create_profile extends Component {
             <option value='2030'>2030</option>
 
           </select>
+            </div>
 
+            <div>
           <label htmlFor="about">About: </label>
           <textarea type="text" name="about" value={about} onChange={this.onChange} />
+            </div>
 
+            <div>
           <label htmlFor="education">Education: </label>
           <input type="text" name="education" onChange={this.onChange} />
-
+            </div>
+            
                 <button id="secondButton" onClick={() => {
                   this.handleInst()
                   jump('.first')

@@ -17,7 +17,8 @@ ip.styles,
 ip.skillLevel,
 ip.teachingSince, 
 ip.about,
-ip.education
+ip.education,
+ip.img_url
 from users u
 join instructor_profile ip
 on u.id = ip.instructor_id

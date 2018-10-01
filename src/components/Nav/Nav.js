@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { updateUser } from '../../redux/reducer';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './Nav.css'
+import './../../styles/nav.css'
 
 class Nav extends Component {
     constructor () {
@@ -40,9 +40,18 @@ class Nav extends Component {
     render() {
       
         const { user } = this.state
-        console.log('/Nav.js ---- this.props.user ------->', this.props.user)
+        // console.log('/Nav.js ---- this.props.user ------->', this.props.user)
         return (
             <div className='Nav'>
+            <Link to='/'>Fret-Finder</Link>
+              <Link to={`/dashboard/${user.id}`}>Dashboard</Link>
+              <div className="dropdown">
+                <button className="dropbtn">Find a Teacher</button>
+                <div className="dropdown-content">
+                  <Link to='/display_instructors'>Browse Teachers</Link>
+                  <Link to='/'>Request a Teacher</Link>
+                </div>
+              </div>
             {user ? <Link to='/'><button onClick={()=>this.logout()}> Logout</button></Link> : <button onClick={() => {this.login()}}>Login</button>}
             </div>
         )
@@ -52,7 +61,7 @@ class Nav extends Component {
 
 const mapStateToProps = state => {
   const { user, isLoading } = state.instructor_reducer;
-  console.log(user)
+  // console.log(user)
   return { user, isLoading }
 }
 

@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import './DisplayInstructors.css'
-
 import { getInstructors, updateUser, getSingleInstructor } from './../../redux/reducer';
+
+import './display_instructors.css'
 
 class DisplayInstructors extends Component {
     constructor () {
@@ -51,33 +50,32 @@ class DisplayInstructors extends Component {
 // where u.instructor = true
     render() {
         // console.log('this.state.user ====>', this.state.user)
-        // console.log('this.props.instructors ====>', this.props.instructors)
+        console.log('Instructors pulled from db --->', this.props.instructors)
 
         const displayBubbas = this.props.instructors.map((inst, index) => {
 
             return (
                 <div key={index} className='instContainer'>
                 <Link to={`/instructor_profile/${inst.id}`}  onClick={() => this.props.getSingleInstructor(inst.id)} >
-                <div>
-                    <h1>{inst.name}</h1>
-                    <h3>{inst.age}</h3>
-                    <h3>{inst.gender}</h3>
-                    <h3>Hourly rate: ${inst.price}</h3>
-                    {/* <span>{inst.electric && <p>electric = true</p>}</span>
-                    <span>{inst.acoustic && <p>acoustic = true</p>}</span> */}
+                <div className='instWrapper'>
+                    <div className='imgBox'>
+                        <img src={inst.img_url} />
                     </div>
+                    <div className='displayInfo'>
+                        <h1>{inst.name}</h1>
+                        <h2>{inst.city}, {inst.state}</h2>
+                        <h3>{inst.instruments}</h3>
+                    </div>
+                </div>
                     </Link>
                 </div>
             )
         })
         return (
-            <div>
-                <h1>Display Instructors</h1>
-                <form>
-                <input type="text" placeholder="Search..."></input>
-                <button>Submit</button>
-                </form>
-                <div>
+            <div className='inst-parent-wrapper'>
+                    <h1 className='fit'>Browse Instructors</h1>
+
+                <div >
             {displayBubbas}
                 </div>
             </div>

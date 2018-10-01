@@ -5,6 +5,8 @@ import { getLessons } from './../../redux/reducer';
 
 import Lessons from './../DisplayLessons/DisplayLessons';
 
+import './Dashboard.css'
+
 class Dashboard extends Component {
     constructor() {
         super();
@@ -16,32 +18,31 @@ class Dashboard extends Component {
     this.props.getLessons(this.props.match.params.id)
   }
   render() {
-    console.log(this.props.user)
+    // console.log(this.props.user)
     const desUser = this.props.user.length > 0 ? this.props.user[0]: {}
-    const desLessons = this.props.lessons.length > 0 ? this.props.lessons[0]: {}
+    const desLessons =  this.props.lessons ? this.props.lessons.length > 0 ? this.props.lessons[0]: {} : null
     const desInstructors = this.props.instructor.length > 0 ? this.props.instructor[0]: {}
-    console.log(desLessons)
-    console.log(desInstructors)
+    console.log('Lessons pulled from db --->', desLessons)
+    // console.log(desInstructors)
     let displayLessons = this.props.lessons.map((lesson, index) => {
       return (
-        <Lessons key={index} location={lesson.lessonlocation} duration={lesson.duration} instrument={lesson.instrument} dateval={lesson.dateval} />
+        <Lessons className="onelessons" key={index} location={lesson.lessonlocation} duration={lesson.duration} instrument={lesson.instrument} dateval={lesson.dateval} />
       )
     })
 
     return (
-      <div>
-        <h1>Dashboard</h1>
-        <Link to='/display_instructors'>Find instructors!</Link>
-        { desUser.instructor && <Link to='/instructor_schedule'>Edit Schedule</Link>}
+      <div className='dashparent'>
+        <div className='dashchild'>
+        <h1>Your dashboard</h1>
+        <Link to="/display_instructors"><button>Browse instructors</button></Link>
+
+        { desUser.instructor && <Link to='/instructor_schedule'><button>Edit Schedule</button></Link>}
         
-        
-                {/* {displayLessons} */}
         <div>{
-            displayLessons.length > 0 ?
+            (!desUser.instructor && displayLessons.length > 0) ?
           <div>{displayLessons}</div> : <Link to='/display_instructors'>You don't have any lessons scheduled. Click here to browse instructors!</Link>
         }</div>
-        
-
+        </div>
       </div>
     )
   }

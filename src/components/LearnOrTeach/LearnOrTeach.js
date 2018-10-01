@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setInstructor } from '../../redux/reducer'
 
+import './LearnOrTeach.css'
 
 
 class LearnOrTeach extends Component {
     constructor () {
         super();
-        this.state = {
-
-        }
         this.redirectHandler = this.redirectHandler.bind(this)
     }
     redirectHandler = () => {
@@ -19,20 +17,19 @@ class LearnOrTeach extends Component {
         this.props.history.push(`/dashboard/${this.props.user[0].id}`);
     }
     render() {
-        // console.log(this.props.user[0])
         const { isLoading } = this.props;
         const { setInstructor } = this.props
-        // console.log(id)
         return (
-            <div>
+            <div className='learnOrParent'>
                 
                 { isLoading ? null
-                : <div><h1>LearnOrTeach</h1> 
-                <button onClick={() => {
+                : <div className='learnOrChild'><h1>LearnOrTeach</h1> 
+                <button className='pickTeach' onClick={() => {
                     setInstructor(this.props.user[0].id)
                     this.redirectHandler()
-                    }}>Sign up as an instructor</button>
-                <button onClick={() => this.studentHandler()}>Sign up as a student</button> </div>
+                    }}>
+                    <p>Sign up as an instructor</p></button>
+                <button className='pickLearn' onClick={() => this.studentHandler()}><p>Sign up as a student</p></button> </div>
                 }
                 
             </div>
@@ -42,7 +39,6 @@ class LearnOrTeach extends Component {
 
 const mapStateToProps = state => {
     const { user, isLoading , instructor} = state.instructor_reducer;
-    console.log(user, instructor)
     return { user, isLoading, instructor }
   }
   

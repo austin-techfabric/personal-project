@@ -1,0 +1,75 @@
+
+
+
+
+
+
+
+
+$colors: (
+    primary: #4d90fe,
+    primary-light: lighten(#4d90fe, 40%),
+    primary-dark: darken(#4d90fe, 40%),
+    accent: #333
+);
+
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+}
+$font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+// map-get($map, $key) : Returns the value in a map associated with a given key.
+
+
+
+
+
+
+
+
+
+
+.learnOrChild {
+    margin-top: 47px;
+    display: flex;
+    flex-direction: column;
+}
+.pickTeach, .pickLearn {
+    // background: red;
+    height: 200px;
+    width: 100%;
+    color: white;
+    font-size: 1.4em;
+    p {
+        position: relative;
+        // z-index: 9999;
+        background: rgba(77, 144, 254, 0.4);
+        height: 100%;
+        width: 102vw;
+        left: -10px;
+        top: 2px;
+        text-align: center;
+        padding-top:85px;
+        transition: 0.5s;
+        &:hover {
+            background: none;
+        }
+    }
+}
+
+.pickLearn {
+    background-image: url('./student.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    p {
+        height: 102%;
+        top:-3px;
+    }
+    
+}
+.pickTeach {
+    background-image: url('./instructor.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    // margin-top: 30px;
+}

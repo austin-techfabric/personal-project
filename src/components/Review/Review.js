@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+// import axios from 'axios';
 // import { connect } from 'react-redux'
 
 import './Review.css';
@@ -32,9 +32,6 @@ class Review extends Component {
         this.setState({[e.target.name]: e.target.value});
       }
 
-        // write ternary to check if user id === poster_id and if so render the edit button = 20 min
-
-
     render() {
         const {user, poster} = this.props;
         
@@ -46,34 +43,49 @@ class Review extends Component {
                 { !this.state.toggleValue 
                 ?
                 <div>
-                <h1>Title: {this.props.title}</h1>
-                <p>Date: {this.props.date}</p>
+                <span className='revdate'>{this.props.date}</span>
+                <h1>{this.props.title}</h1>
+                {/* <h1>{this.props.poster.name}</h1> */}
                 <p>Rating: {this.props.stars}/5</p>
-                <p>Content</p>
+                {/* <p>Content</p> */}
                 <p>{this.props.body}</p>
                 {  user.id === poster 
                 ?
                 <div>
-                    <button onClick={() => this.toggleEdit()}>Edit</button>
+                    <button id='lols' onClick={() => this.toggleEdit()}>Edit</button>
                 </div>
                 : null
                 }
                 </div>
-                : <div>
-                    <label>Title</label>
-                    <input type="text" name="inpTitle" value={this.state.inpTitle} onChange={this.onChange}></input>
+                : <div className='editRev'>
+                    <div>
+                    <label >Title</label>
+                    <input id='lol' type="text" name="inpTitle" value={this.state.inpTitle} onChange={this.onChange}></input>
+                    </div>
+                    <dv>
                     <label>Body</label>
-                    <input type="text" name="inpBody" value={this.state.inpBody} onChange={this.onChange}></input>
+                    <input id='lol' type="text" name="inpBody" value={this.state.inpBody} onChange={this.onChange}></input>
+                    </dv>
+                    <div>
                     <label>Stars</label>
-                    <input type="text" name="inpStars" value={this.state.inpStars} onChange={this.onChange}></input>
-                    <button onClick={() => {
+                    <select id='lol' name='inpStars' onChange={this.onChange}>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option value='4'>4</option>
+                        <option value='5'>5</option>
+                    </select>
+                    </div>
+                    <div className='buttonDiv'>
+                    <button id='butt' onClick={() => {
                         this.props.handleDelete(this.props.id)
                         this.toggleEdit()
                         }}>Delete</button>
-                <button onClick={() => {
+                <button id='butt' onClick={() => {
                     this.props.handleEdit(this.state.inpTitle, this.state.inpBody, this.state.inpStars, this.props.id)
                     this.toggleEdit()}}>Submit</button>
-                    <button onClick={() => this.toggleEdit()}>Cancel</button></div>}
+                    <button id='butt' onClick={() => this.toggleEdit()}>Cancel</button></div> </div>}
+                    
             </div>
         )
     }

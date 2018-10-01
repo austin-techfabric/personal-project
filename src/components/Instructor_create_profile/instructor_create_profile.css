@@ -1,0 +1,92 @@
+.first, .second, .third {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: #ffffff;
+  padding-top: 75px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.first > h1, .second > h1, .third > h1 {
+  font-size: 1.4em;
+  margin-bottom: 50px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* text align left target label */
+.first > label, .first > input, .first > select, .second > label, .second > input, .second > select, .second > textarea {
+  margin: 5px;
+  width: 300px;
+  padding: 5px;
+}
+
+.second > .inst-wrapper > div {
+  display: inline-block;
+  width: 300px;
+}
+
+.second {
+  height: 100vh;
+  width: 100vw;
+  background: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.third {
+  height: 100vh;
+  width: 100vw;
+  background: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.does {
+  padding: 10px;
+  height: 40px;
+  width: 90px;
+  background: #ccc;
+  border: solid 1px #4d90fe;
+  margin: 5px;
+}
+
+.doesnt {
+  padding: 10px;
+  height: 40px;
+  width: 90px;
+  background: #fff;
+  border-radius: 2px;
+  border: solid 1px #4d90fe;
+  margin: 5px;
+}
+
+.does:hover, .doesnt:hover {
+  padding: 10px;
+  height: 40px;
+  width: 90px;
+  background: #4d90fe;
+  border-radius: 2px;
+  color: #fff;
+  border: solid 1px #4d90fe;
+  margin: 5px;
+}
+
+.does:active, .doesnt:active {
+  padding: 10px;
+  height: 40px;
+  width: 90px;
+  background: #4684e7;
+  border-radius: 2px;
+  color: #fff;
+  border: solid 1px #4d90fe;
+  margin: 5px;
+}
+/*# sourceMappingURL=instructor_create_profile.css.map */

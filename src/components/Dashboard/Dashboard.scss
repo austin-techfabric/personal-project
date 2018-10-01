@@ -1,0 +1,65 @@
+$colors: (
+    primary: #4d90fe,
+    primary-light: lighten(#4d90fe, 70%),
+    primary-dark: darken(#4d90fe, 10%),
+    accent: #333,
+    accent-light: lighten(#333, 25%),
+    accent-lighter: lighten(#333, 50%)
+);
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+}
+$font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+.dashparent {
+    font-family: $font;
+    // border: #333 solid 1px;
+    padding-top: 47px;
+    overflow-x: hidden;
+
+    h1 {
+        font-weight: 700;
+        font-size: 1.4em;
+        padding: 23px;
+        border-bottom: color(accent-lighter) solid 1px;
+    }
+    button {
+        display: inline-block;
+        color: white;
+        background: color(primary);
+        font-weight:500; 
+        
+        border: solid 1px color(primary);
+        height:40px;
+        // margin-bottom: 15px;
+        width:100%;
+
+        
+        &:hover {
+            background: color(primary);
+            color: white;
+        }
+        &:active {
+            background: color(primary-dark);
+            color: white;
+        }
+    }
+}
+.dashchild {
+    // border: #333 solid 1px;
+    
+}
+.singleLesson {
+    font-size: 0.8em;
+    text-align: left;
+    border-bottom: color(accent-lighter) solid 1px;
+    padding: 10px;
+    width: 100%;
+    line-height: 16px;
+    height: 100%;
+    background: #F9F9F9;
+    // margin:10px;
+}
+.onelessons {
+    border: 1px solid black;
+}

@@ -8,10 +8,12 @@ import DisplayInstructors from './components/DisplayInstructors/DisplayInstructo
 import instructorProfile from './components/InstructorProfile/InstructorProfile';
 import CreateSchedule from './components/CreateSchedule/CreateSchedule';
 import About from './components/About/About'; 
+import Home from './components/Home/Home'; 
 import ScheduleLesson from './components/ScheduleLesson/ScheduleLesson'; 
 
 export default (
     <Switch>
+    <Route path="/" exact component={Home} />
     
     <Route path="/dashboard/:id" component={Dashboard} />
     <Route path="/about" component={About} />

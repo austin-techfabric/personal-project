@@ -32,7 +32,8 @@ create table instructor_profile (
     skillLevel text,
     teachingSince varchar(30) not null,
     about text not null, 
-    education text
+    education text,
+    img_url text
 );	
 
 create table reviews (
@@ -288,7 +289,7 @@ insert into users (
 
 insert into instructor_profile(
     instructor_id,      age,	gender,     locationType,       zipcode,    address,    city,   state,      country,
-    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education   
+    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education, img_url   
 ) values (
     1,  30, 'male', 'home', 83315,  '3255 S. Camelback Rd.', 'Tempe', 'AZ',  'United States',  62,     
     'guitar, ukulele',    
@@ -296,12 +297,13 @@ insert into instructor_profile(
     'beginner, intermediate, advanced',     
     'June 2000',
     'Beginning at age 13 and continuing to the present day, I have explored the power of my own self-expression through musical performance. From chords, to scales, to modes, I enjoy the process of working with my students to help them discover the power and joy of playing guitar. As a self-taught musician, I dont encourage sight-reading or advocate for classical guitar playing, but focus instead on practical skills in the blues, rock, and folk idioms. Whether youre a public performer, or just a home hobbyist, if youre looking for tips to improve your playing, I hope to help you unleash your inner guitar-god!',
-    'BFA from UT Austin in Theatre Studies'
+    'BFA from UT Austin in Theatre Studies',
+    'https://dj1hlxw0wr920.cloudfront.net/userfiles/wyzfiles/5803c5f6-bffc-4cb0-9393-5e5ce2d988a1.jpg'
 );
 
 insert into instructor_profile(
     instructor_id,      age,	gender,     locationType,       zipcode,    address,    city,   state,      country,
-    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education  
+    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education, img_url  
 ) values (
     2,  27, 'male', 'studio',  93213, '1324 W. Indian School Rd.',  'Tempe',  'AZ', 'United States', 56,     
     'guitar, bass, ukulele',     
@@ -309,12 +311,13 @@ insert into instructor_profile(
     'beginner, intermediate',      
     'May 2008',
     'I originally entered the University of the Arts as a Guitar major. After a semester I decided composition was the avenue I wanted to pursue because I felt I had all I needed to take my guitar education relatively in my hands and outside of an educational institution. However, I did continue to take non-major lessons with the Guitar faculty in the following semesters.',
-    'University of the Arts Music Composition'
+    'University of the Arts Music Composition',
+     'https://dj1hlxw0wr920.cloudfront.net/userfiles/wyzfiles/3966c4f2-23ba-49b4-a570-e0d501770278.jpg'
 );
 
 insert into instructor_profile(
     instructor_id,      age,	gender,     locationType,       zipcode,    address,    city,   state,      country,
-    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education  
+    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education, img_url  
 ) values (
     3, 34, 'male', 'studio', 09668, '780 E. Camelback St.', 'Mesa', 'AZ', 'United States', 70,
     'guitar',
@@ -322,12 +325,13 @@ insert into instructor_profile(
     'beginner, intermediate',
     'May 2012',
     'I studied guitar performance and composition at Berklee College of Music. Guitar is my main and favorite instrument. I cover all styles but have a preference for blues, jazz, funk and gospel.',
-    'University of the Arts Music Composition'
+    'University of the Arts Music Composition',
+        'https://dj1hlxw0wr920.cloudfront.net/userfiles/wyzfiles/499d3807-249a-4527-9122-9b52aa62a4b8.jpg'
 );
 
 insert into instructor_profile(
     instructor_id,      age,	gender,     locationType,       zipcode,    address,    city,   state,      country,
-    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education  
+    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education, img_url  
 ) values (
     4, 36, 'male', 'studio', 32422,  '780 N. Ceaser Rd.', 'Tempe', 'AZ', 'United States', 65,
     'guitar, bass, ukulele',
@@ -335,12 +339,13 @@ insert into instructor_profile(
     'beginner, intermediate, advanced',
     'December 2015',
     'I originally entered the University of the Arts as a Guitar major. After a semester I decided composition was the avenue I wanted to pursue because I felt I had all I needed to take my guitar education relatively in my hands and outside of an educational institution. However, I did continue to take non-major lessons with the Guitar faculty in the following semesters.',
-    'University of California Santa Cruz Music'
+    'University of California Santa Cruz Music',
+        'https://dj1hlxw0wr920.cloudfront.net/userfiles/wyzfiles/cc66003f-e99d-4ae2-82d2-a50f88697821.jpg'
 );
 
 insert into instructor_profile(
     instructor_id,      age,	gender,     locationType,       zipcode,    address,    city,   state,      country,
-    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education  
+    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education, img_url  
 ) values (
     5, 25, 'male', 'home', 34574, 'Tater N. Seeder St.', 'Mesa', 'AZ', 'United States', 73,
     'guitar',
@@ -348,12 +353,13 @@ insert into instructor_profile(
     'beginner, intermediate, advanced',
     'July 2012',
     'Ive been playing guitar since I was 12. I like to teach rock, blues, and folk music. I prefer to teach beginners and early intermediate players. I help students learn chords, scales, and basic improvisation.',
-    'University of the Arts Music Composition'
+    'University of the Arts Music Composition',
+    'https://dj1hlxw0wr920.cloudfront.net/userfiles/wyzfiles/bd89164b-71a1-45f8-8825-2cd23517996d.jpg'
 );
 
 insert into instructor_profile(
     instructor_id,      age,	gender,     locationType,       zipcode,    address,    city,   state,      country,
-    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education  
+    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education, img_url  
 ) values (
     6, 40, 'male', 'studio', 34534, 'Uer West Calon Rd.', 'Tempe', 'AZ', 'United States', 70,
     'guitar, bass, ukulele',
@@ -361,12 +367,13 @@ insert into instructor_profile(
     'beginner, intermediate, advanced',
     'February 2014',
     'The guitar is the most popular instrument in the world, especially electric guitar. I possess over 20 years experience as a professional teacher of guitar successfully teaching hundreds of students. Provide teaching at all levels. Beginners are always welcome and encouraged. Most all ages. Be prepared to have a lot of fun!',
-    'Southwestern College in Music'
+    'Southwestern College in Music',
+    'https://dj1hlxw0wr920.cloudfront.net/userfiles/wyzfiles/6a0e7455-791c-4c3e-8d95-a09a926a34d0.jpg'
 );
 
 insert into instructor_profile(
     instructor_id,      age,	gender,     locationType,       zipcode,    address,    city,   state,      country,
-    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education  
+    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education, img_url  
 ) values (
     7, 29, 'male', 'studio', 33815, 'First N. Sir Rd.', 'Mesa', 'AZ', 'United States', 67,
     'guitar',
@@ -374,12 +381,13 @@ insert into instructor_profile(
     'beginner, intermediate, advanced',
     'May 1998',
     'I have been playing the guitar for over 20 years which includes classical guitar training. I have been the musical director for many of the bands I have played with. I have composed, played and produced music for documentaries. Students will learn how to play chord progressions and read cord charts, as well as improvisation, scales, soloing techniques, ear-training and basic guitar knowledge.',
-    'University of the Interpretive Arts Music Composition'
+    'University of the Interpretive Arts Music Composition',
+        'https://dj1hlxw0wr920.cloudfront.net/userfiles/wyzfiles/5cadf57e-481a-4b10-896f-53774f95ef79.jpg'
 );
 
 insert into instructor_profile(
     instructor_id,      age,	gender,     locationType,       zipcode,    address,    city,   state,      country,
-    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education  
+    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education, img_url  
 ) values (
     8, 50, 'male', 'home', 34554, '1142 N. Morse Rd.', 'Mesa', 'AZ', 'United States', 63,
     'guitar',
@@ -387,12 +395,13 @@ insert into instructor_profile(
     'beginner, intermediate, advanced',
     'March 1995',
     'I have been playing the guitar for over 20 years which includes classical guitar training. I have been the musical director for many of the bands I have played with. I have composed, played and produced music for documentaries. Students will learn how to play chord progressions and read cord charts, as well as improvisation, scales, soloing techniques, ear-training and basic guitar knowledge.',
-    'University of the Arts Music Composition'
+    'University of the Arts Music Composition',
+    'https://avatars0.githubusercontent.com/u/31582611?s=460&v=4'
 );
 
 insert into instructor_profile(
     instructor_id,      age,	gender,     locationType,       zipcode,    address,    city,   state,      country,
-    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education  
+    price,    instruments,      styles,     skillLevel,    teachingSince,    about,    education, img_url  
 ) values (
     9, 35, 'male', 'studio', 33512, '707 New Town Rd.', 'Tempe', 'AZ', 'United States', 60,
     'guitar, bass, ukulele',
@@ -400,7 +409,8 @@ insert into instructor_profile(
     'beginner, intermediate, advanced',
     'April 2000',
     'I am a university trained classical guitarist and a studio professional trained jazz and rock guitarist. I have performed as a guitarist and singer in most styles for over 25 years. I have garnered multiple awards, articles and respect as a teacher, player and songwriter.',
-    'University of the Arts Music Composition'
+    'University of the Arts Music Composition',
+    'https://dj1hlxw0wr920.cloudfront.net/userfiles/wyzfiles/4f640f6b-4480-4311-a443-dc320f16474f.jpg'
 );
 
 insert into schedule (
@@ -729,156 +739,156 @@ insert into schedule (
 
 
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 1, 'Knowledgeable and Patient Tutor', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 5, 'September 2017');
+values (10, 1, 'Knowledgeable and Patient Tutor', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 5, 'September 2017');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 2, 'Stayed Longer For a Tough Lesson', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 4, 'May 2018');
+values (10, 2, 'Stayed Longer For a Tough Lesson', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 4, 'May 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 3, 'Great lesson! Very impressed', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 4, 'May 2018');
+values (10, 3, 'Great lesson! Very impressed', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 4, 'May 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 4, 'The BEST tutor', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 5, 'June 2018');
+values (10, 4, 'The BEST tutor', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 5, 'June 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 5, 'Direct and to the point', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 4, 'October 2016');
+values (10, 5, 'Direct and to the point', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 4, 'October 2016');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 6, 'Knowledgeable and Patient Tutor', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 5, 'July 2015');
+values (10, 6, 'The BEST tutor', 'I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. I am so excited.', 5, 'July 2015');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 7, 'The BEST tutor', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 4, 'August 2018');
+values (10, 7, 'The BEST tutor', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 4, 'August 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 8, 'Great lesson! Very impressed', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 4, 'June 2018');
+values (10, 8, 'Great lesson! Very impressed', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 4, 'June 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 9, 'Stayed Longer For a Tough Lesson', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 5, 'Decemer 2014');
+values (10, 9, 'Stayed Longer For a Tough Lesson', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 5, 'Decemer 2014');
 
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 1, 'Stayed Longer For a Tough Lesson', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 5, 'September 2017');
+values (11, 1, 'Stayed Longer For a Tough Lesson', 'He is looking forward to more lessons and learning more playing the guitar.', 5, 'September 2017');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 2, 'Great lesson! Very impressed', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 4, 'May 2018');
+values (11, 2, 'Great lesson! Very impressed', 'He is looking forward to more lessons and learning more playing the guitar.', 4, 'May 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 3, 'Knowledgeable and Patient Tutor', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 4, 'May 2018');
+values (11, 3, 'Knowledgeable and Patient Tutor', 'He is looking forward to more lessons and learning more playing the guitar.', 4, 'May 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 4, 'The BEST tutor', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 5, 'June 2018');
+values (11, 4, 'The BEST tutor', 'He is looking forward to more lessons and learning more playing the guitar.', 5, 'June 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 5, 'The BEST tutor', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 4, 'October 2016');
+values (11, 5, 'The BEST tutor', 'He is looking forward to more lessons and learning more playing the guitar.', 4, 'October 2016');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 6, 'Direct and to the point', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 5, 'July 2015');
+values (11, 6, 'Direct and to the point', 'He is looking forward to more lessons and learning more playing the guitar.', 5, 'July 2015');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 7, 'Knowledgeable and Patient Tutor', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 4, 'August 2018');
+values (11, 7, 'Knowledgeable and Patient Tutor', 'He is looking forward to more lessons and learning more playing the guitar.', 4, 'August 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 8, 'Great lesson! Very impressed', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 4, 'June 2018');
+values (11, 8, 'Great lesson! Very impressed', 'He is looking forward to more lessons and learning more playing the guitar.', 4, 'June 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 9, 'Stayed Longer For a Tough Lesson', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 5, 'Decemer 2014');
+values (11, 9, 'Stayed Longer For a Tough Lesson', 'He is looking forward to more lessons and learning more playing the guitar.', 5, 'Decemer 2014');
 
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 1, 'Knowledgeable and Patient Tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'September 2017');
+values (12, 1, 'Knowledgeable and Patient Tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'September 2017');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 2, 'Direct and to the point', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'May 2018');
+values (12, 2, 'Direct and to the point', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'May 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 3, 'Stayed Longer For a Tough Lesson', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'May 2018');
+values (12, 3, 'Stayed Longer For a Tough Lesson', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'May 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 4, 'Great lesson! Very impressed', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'June 2018');
+values (12, 4, 'Great lesson! Very impressed', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'June 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 5, 'The BEST tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'October 2016');
+values (12, 5, 'The BEST tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'October 2016');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 6, 'Knowledgeable and Patient Tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'July 2015');
+values (12, 6, 'Knowledgeable and Patient Tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'July 2015');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 7, 'The greatest', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'August 2018');
+values (12, 7, 'The greatest', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'August 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 8, 'The BEST tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'June 2018');
+values (12, 8, 'The BEST tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'June 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 9, 'Stayed Longer For a Tough Lesson', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'Decemer 2014');
-
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal)
-values (13, 1, 'Great lesson! Very impressed', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'September 2017');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 2, 'Knowledgeable and Patient Tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'May 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 3, 'The BEST tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'May 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 4, 'Stayed Longer For a Tough Lesson', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'June 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 5, 'The BEST tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'October 2016');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 6, 'Direct and to the point', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'July 2015');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 7, 'Knowledgeable and Patient Tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'August 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 8, 'Stayed Longer For a Tough Lesson', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'June 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 9, 'Great lesson! Very impressed', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'Decemer 2014');
-
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 9, 'Knowledgeable and Patient Tutor', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 5, 'September 2017');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 8, 'Stayed Longer For a Tough Lesson', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 4, 'May 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 7, 'Great lesson! Very impressed', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 4, 'May 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 6, 'The BEST tutor', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 5, 'June 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 5, 'Direct and to the point', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 4, 'October 2016');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 4, 'Knowledgeable and Patient Tutor', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 5, 'July 2015');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 3, 'The BEST tutor', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 4, 'August 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 2, 'Great lesson! Very impressed', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 4, 'June 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (10, 1, 'Stayed Longer For a Tough Lesson', 'Just started my lessons with Steve on guitar. I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything. Thought it might be difficult not to do this in person, but it went amazing!', 5, 'Decemer 2014');
-
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 9, 'Stayed Longer For a Tough Lesson', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 5, 'September 2017');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 8, 'Great lesson! Very impressed', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 4, 'May 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 7, 'Knowledgeable and Patient Tutor', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 4, 'May 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 6, 'The BEST tutor', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 5, 'June 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 5, 'The BEST tutor', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 4, 'October 2016');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 4, 'Direct and to the point', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 5, 'July 2015');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 3, 'Knowledgeable and Patient Tutor', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 4, 'August 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 2, 'Great lesson! Very impressed', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 4, 'June 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (11, 1, 'Stayed Longer For a Tough Lesson', 'Our 10 y.o. son is enthused to learn playing the guitar after his first lesson with Steve. He is looking forward to more lessons and learning more playing the guitar.', 5, 'Decemer 2014');
-
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 9, 'Knowledgeable and Patient Tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'September 2017');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 8, 'Direct and to the point', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'May 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 7, 'Stayed Longer For a Tough Lesson', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'May 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 6, 'Great lesson! Very impressed', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'June 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 5, 'The BEST tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'October 2016');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 4, 'Knowledgeable and Patient Tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'July 2015');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 3, 'The greatest', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'August 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 2, 'The BEST tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'June 2018');
-insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (12, 1, 'Stayed Longer For a Tough Lesson', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'Decemer 2014');
+values (12, 9, 'Stayed Longer For a Tough Lesson', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'Decemer 2014');
 
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal)
-values (13, 9, 'Great lesson! Very impressed', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'September 2017');
+values (13, 1, 'Great lesson! Very impressed', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'September 2017');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 8, 'Knowledgeable and Patient Tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'May 2018');
+values (13, 2, 'Knowledgeable and Patient Tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'May 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 7, 'The BEST tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'May 2018');
+values (13, 3, 'The BEST tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'May 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 6, 'Stayed Longer For a Tough Lesson', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'June 2018');
+values (13, 4, 'Stayed Longer For a Tough Lesson', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'June 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 5, 'The BEST tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'October 2016');
+values (13, 5, 'The BEST tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'October 2016');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 4, 'Direct and to the point', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'July 2015');
+values (13, 6, 'Direct and to the point', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'July 2015');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 3, 'Knowledgeable and Patient Tutor', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'August 2018');
+values (13, 7, 'Knowledgeable and Patient Tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'August 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 2, 'Stayed Longer For a Tough Lesson', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 4, 'June 2018');
+values (13, 8, 'Stayed Longer For a Tough Lesson', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'June 2018');
 insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
-values (13, 1, 'Great lesson! Very impressed', 'I was really struggling in my Music 101 class until I had a tutoring session with Steve. There are subjects where I do not understand things the first time and reading music happens to be one of them. However, Steve takes his time to explain it to you. He really breaks it down to the core if you need to take it to that level.', 5, 'Decemer 2014');
+values (13, 9, 'Great lesson! Very impressed', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'Decemer 2014');
+
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (10, 9, 'Knowledgeable and Patient Tutor', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 5, 'September 2017');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (10, 8, 'Stayed Longer For a Tough Lesson', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 4, 'May 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (10, 7, 'Great lesson! Very impressed', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 4, 'May 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (10, 6, 'The BEST tutor', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 5, 'June 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (10, 5, 'Direct and to the point', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 4, 'October 2016');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (10, 4, 'Knowledgeable and Patient Tutor', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 5, 'July 2015');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (10, 3, 'The BEST tutor', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 4, 'August 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (10, 2, 'Great lesson! Very impressed', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 4, 'June 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (10, 1, 'Stayed Longer For a Tough Lesson', ' I am so excited. It was easy and he is a great teacher!!! I literally had no idea what string is what and how to do anything.', 5, 'Decemer 2014');
+
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (11, 9, 'Stayed Longer For a Tough Lesson', 'He is looking forward to more lessons and learning more playing the guitar.', 5, 'September 2017');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (11, 8, 'Great lesson! Very impressed', 'He is looking forward to more lessons and learning more playing the guitar.', 4, 'May 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (11, 7, 'Knowledgeable and Patient Tutor', 'He is looking forward to more lessons and learning more playing the guitar.', 4, 'May 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (11, 6, 'The BEST tutor', 'He is looking forward to more lessons and learning more playing the guitar.', 5, 'June 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (11, 5, 'The BEST tutor', 'He is looking forward to more lessons and learning more playing the guitar.', 4, 'October 2016');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (11, 4, 'Direct and to the point', 'He is looking forward to more lessons and learning more playing the guitar.', 5, 'July 2015');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (11, 3, 'Knowledgeable and Patient Tutor', 'He is looking forward to more lessons and learning more playing the guitar.', 4, 'August 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (11, 2, 'Great lesson! Very impressed', 'He is looking forward to more lessons and learning more playing the guitar.', 4, 'June 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (11, 1, 'Stayed Longer For a Tough Lesson', 'He is looking forward to more lessons and learning more playing the guitar.', 5, 'Decemer 2014');
+
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (12, 9, 'Knowledgeable and Patient Tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'September 2017');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (12, 8, 'Direct and to the point', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'May 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (12, 7, 'Stayed Longer For a Tough Lesson', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'May 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (12, 6, 'Great lesson! Very impressed', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'June 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (12, 5, 'The BEST tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'October 2016');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (12, 4, 'Knowledgeable and Patient Tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'July 2015');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (12, 3, 'The greatest', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'August 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (12, 2, 'The BEST tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'June 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (12, 1, 'Stayed Longer For a Tough Lesson', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'Decemer 2014');
+
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal)
+values (13, 9, 'Great lesson! Very impressed', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'September 2017');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (13, 8, 'Knowledgeable and Patient Tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'May 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (13, 7, 'The BEST tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'May 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (13, 6, 'Stayed Longer For a Tough Lesson', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'June 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (13, 5, 'The BEST tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'October 2016');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (13, 4, 'Direct and to the point', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'July 2015');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (13, 3, 'Knowledgeable and Patient Tutor', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'August 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (13, 2, 'Stayed Longer For a Tough Lesson', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 4, 'June 2018');
+insert into reviews (poster_id, profile_id, title, body, stars, dateVal) 
+values (13, 1, 'Great lesson! Very impressed', 'There are subjects where I do not understand things the first time and reading music happens to be one of them.', 5, 'Decemer 2014');
 
 
 

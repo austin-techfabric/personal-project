@@ -160,7 +160,7 @@ export function getReviews(id) {
         type: GET_REVIEWS,
         payload: axios.get(`/api/instructor_reviews/${id}`)
         .then(response => {
-            // console.log('getReviews ====>', response.data)
+            console.log('Instructor reviews pulled from db ====>', response.data)
             return response.data
         })
         .catch(err => console.log('getReviews error ---->', err))
@@ -172,7 +172,7 @@ export function getLessons(id) {
         type: GET_LESSONS,
         payload: axios.get(`/api/lessons/${id}`)
         .then(response => {
-            console.log('getLessons ====>', response.data)
+            // console.log('getLessons ====>', response.data)
             return response.data
         })
         .catch(err => console.log('getReviews error ---->', err))
@@ -222,7 +222,7 @@ export function getSchedule(id) {
         type: GET_SCHEDULE,
         payload: axios.get(`/api/instructor_schedule/${id}`)
         .then(response => {
-            console.log('getSchedule ====>', response.data)
+            console.log('Instructor schedule pulled from db --->', response.data)
             return response.data
         })
         .catch(err => console.log('getReviews error ---->', err))

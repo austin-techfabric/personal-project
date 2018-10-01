@@ -1,0 +1,87 @@
+.sched-parent {
+  padding-top: 86px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sched-parent img {
+  border-radius: 100%;
+  height: 165px;
+  width: 165px;
+  margin-bottom: 30px;
+}
+
+.sched-parent button {
+  position: relative;
+  top: -30px;
+  height: 20px;
+}
+
+.sched-parent .blueBox {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  font-size: 1.2em;
+  font-weight: 500;
+  background: #4d90fe;
+  color: white;
+}
+
+.sched-parent form {
+  background: #F9F9F9;
+  padding-top: 25px;
+  text-align: left;
+  padding: 20px;
+  line-height: 20px;
+}
+
+.sched-parent form label {
+  font-weight: 500;
+}
+
+.sched-parent form select {
+  background: white;
+  border: none;
+  border: #737373 solid 1px;
+  border-radius: 3px;
+  padding: 3px;
+  margin: 5px;
+}
+
+.sched-parent form #subbutt {
+  position: relative;
+  top: 2vh;
+  margin: 30px;
+  height: 40px;
+  width: 80%;
+  color: #4d90fe;
+  background: white;
+  border: none;
+  border: solid 1px #4d90fe;
+  border-radius: 3px;
+}
+
+.moveOutTheWay {
+  position: absolute;
+  width: 25%;
+}
+
+.moveOutTheWay a > button {
+  margin-top: 5px;
+  border: #4d90fe solid 1px;
+  background: white;
+  color: #4d90fe;
+  font-weight: 500;
+  border: solid 1px #4d90fe;
+  border-radius: 5px;
+  height: 20px;
+  width: 60%;
+}
+
+.on {
+  color: #333;
+}
+
+.off {
+  color: #b3b3b3;
+}
+/*# sourceMappingURL=sched.css.map */
