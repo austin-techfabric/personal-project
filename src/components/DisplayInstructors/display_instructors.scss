@@ -11,9 +11,12 @@ $colors: (
 $font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 .inst-parent-wrapper {
-    margin-top: 47px;
+    position: relative;
+    top: 61px;
     // border: black solid 1px;
     padding: 10px 0;
+    background: #4d90fe;
+    color: white;
     font-family: $font;
     a {
         text-decoration: none;
@@ -59,10 +62,10 @@ $font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100%;
     width: 100%;
     padding: 15px;
-    padding-bottom: 22px;
+    padding-bottom: 20px;
     border-bottom: #999 1px solid;
-    font-weight: 700;
-    font-size: 1.4em;
+    font-weight: 400;
+    font-size: 1.3em;
 
 }
 .displayInfo {

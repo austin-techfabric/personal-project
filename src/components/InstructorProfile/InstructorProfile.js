@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import Review from './../Review/Review';
 
-import './instructor_profile.css'
+import './instructor_profile.scss'
 
  class InstructorProfile extends Component {
     constructor () {
@@ -27,24 +27,23 @@ import './instructor_profile.css'
     }
     toggleEdit = () => {
        this.setState((prevState) =>{
-        console.log('prevstate', prevState)
            return {
                toggleValue: !prevState.toggleValue,
            }
         })
     }
     handleDelete = (deletedId) => {
-        console.log('CLICKED', deletedId)
+        // console.log('CLICKED', deletedId)
         axios.delete(`/api/instructor_reviews/${this.props.match.params.id}?deletedId=${deletedId}`)
         .then(response => this.props.deleteReviews(response.data))
         .catch(error => console.log('handleDelete', error))
     }
     handleEdit = (title, body, stars, id) => {
-        console.log('CLICKED', id, title, body, stars)
+        // console.log('CLICKED', id, title, body, stars)
         
         axios.put(`/api/instructor_reviews/${this.props.match.params.id}`, {title, body, stars, id})
         .then(response => {
-            console.log('handleEdit response.data ======>', response.data)
+            // console.log('handleEdit response.data ======>', response.data)
             this.props.editReviews(response.data)
         })
         .catch(error => console.log('handleDelete', error))
@@ -62,7 +61,7 @@ import './instructor_profile.css'
         
         axios.post(`/api/instructor_reviews/${this.props.match.params.id}`, {title, body, stars, poster_id, dateVal})
         .then(response => {
-            console.log('createReview response.data ======>', response.data)
+            // console.log('createReview response.data ======>', response.data)
             this.toggleEdit()
             this.props.createReview(response.data)
         })
@@ -71,7 +70,7 @@ import './instructor_profile.css'
        
     }
     onChange(e) {
-        console.log(e.target.name, e.target.value)
+        // console.log(e.target.name, e.target.value)
         this.setState({[e.target.name]: e.target.value});
     }
 
@@ -86,6 +85,17 @@ import './instructor_profile.css'
         const reviewList = reviews
 
         console.log('Instructor Profile pulled from db --->', data)
+
+
+
+
+
+
+
+
+
+
+
 
         const renderReviews = reviewList.map((review, index) => {
             return (
@@ -103,20 +113,33 @@ import './instructor_profile.css'
                 />
             )
         })
+
+
+
+
+
+
+
+
+
+
         return (
             <div className='instructor-profile-wrapper'>
                 <div className='instructor-profile-info'>
                 <div className='moveOutTheWay'>
             <Link  to="/display_instructors"><button>Back</button></Link>
+
+
+
+
+
             </div>
-                <img src={data.picture_url} />
-                
+                <img src={data.picture_url} alt='hullo'/>
                 <h1>{data.name}</h1>
                 <h2>{data.city}, {data.state}</h2>
                         <Link to={`/create_lesson/${this.props.match.params.id}`}><button>Contact {data.name}</button></Link>
                     <div className="about-instructor">
                         <div className='block-div'>
-                        
                             <h1>About</h1>
                             <h2>Teaching Since: <span>{data.teachingsince}</span></h2>
                             <h2>Instrument(s): <span>{data.instruments}</span></h2>

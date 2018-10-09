@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 // import axios from 'axios';
 // import { connect } from 'react-redux'
 
-import './Review.css';
+import './Review.scss';
 
 
-class Review extends Component {
+export default class Review extends Component {
     constructor () {
         super();
         this.state = {
             toggleValue: false,
-            inpTitle: '',
-            inpBody: '',
-            inpStars: 0,
+            Title: '',
+            Body: '',
+            Stars: 0,
         }
         this.toggleEdit = this.toggleEdit.bind(this)
         this.onChange = this.onChange.bind(this)
@@ -28,27 +29,27 @@ class Review extends Component {
      }
  
     onChange(e) {
-        console.log(e.target.name, e.target.value)
+        // console.log(e.target.name, e.target.value)
         this.setState({[e.target.name]: e.target.value});
       }
 
     render() {
-        const {user, poster} = this.props;
+        const {user, poster, body, date, title, stars, id, handleDelete, handleEdit} = this.props
+        const {toggleValue, Title, Body, Stars} = this.state
+        // const {inpBody}
         
         // console.log(user)
         // console.log(poster)
         // console.log(req.session.user)
         return (
             <div className='review-wrapper'>
-                { !this.state.toggleValue 
+                { !toggleValue 
                 ?
                 <div>
-                <span className='revdate'>{this.props.date}</span>
-                <h1>{this.props.title}</h1>
-                {/* <h1>{this.props.poster.name}</h1> */}
-                <p>Rating: {this.props.stars}/5</p>
-                {/* <p>Content</p> */}
-                <p>{this.props.body}</p>
+                <span className='revdate'>{date}</span>
+                <h1>{title}</h1>
+                <p>Rating: {stars}/5</p>
+                <p>{body}</p>
                 {  user.id === poster 
                 ?
                 <div>
@@ -60,12 +61,12 @@ class Review extends Component {
                 : <div className='editRev'>
                     <div>
                     <label >Title</label>
-                    <input id='lol' type="text" name="inpTitle" value={this.state.inpTitle} onChange={this.onChange}></input>
+                    <input id='lol' type="text" name="inpTitle" value={Title} onChange={this.onChange}></input>
                     </div>
-                    <dv>
+                    <div>
                     <label>Body</label>
-                    <input id='lol' type="text" name="inpBody" value={this.state.inpBody} onChange={this.onChange}></input>
-                    </dv>
+                    <input id='lol' type="text" name="inpBody" value={Body} onChange={this.onChange}></input>
+                    </div>
                     <div>
                     <label>Stars</label>
                     <select id='lol' name='inpStars' onChange={this.onChange}>
@@ -78,11 +79,11 @@ class Review extends Component {
                     </div>
                     <div className='buttonDiv'>
                     <button id='butt' onClick={() => {
-                        this.props.handleDelete(this.props.id)
+                        handleDelete(id)
                         this.toggleEdit()
                         }}>Delete</button>
                 <button id='butt' onClick={() => {
-                    this.props.handleEdit(this.state.inpTitle, this.state.inpBody, this.state.inpStars, this.props.id)
+                    handleEdit(Title, Body, Stars, id)
                     this.toggleEdit()}}>Submit</button>
                     <button id='butt' onClick={() => this.toggleEdit()}>Cancel</button></div> </div>}
                     
@@ -91,6 +92,12 @@ class Review extends Component {
     }
 }
 
-export default Review
-
-// export default connect()(Review)
+// const {user, poster, body, date, title, stars, id, handleDelete, handleEdit} = this.props
+Review.propTypes = {
+    user: PropTypes.number.isRequired,
+    poster: PropTypes.number.isRequired,
+    stars: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+  }

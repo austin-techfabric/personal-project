@@ -13,30 +13,66 @@ $font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 
 .first, .second, .third {
+    button {
+        background: #4d90fe;
+        border-radius: 3px;
+        border:none;
+        margin: 10px;
+        color: white;
+        height: 40px;
+        width: 80px;
+        display: inline-block;
+    }
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
+    // border: #333 solid 1px;
     width: 100vw;
-    background: #ffffff;
+    padding-left: 30px;
+    padding-right: 30px;
+    background: #F9F9F9;
     padding-top: 75px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .first>h1, .second>h1, .third>h1 {
+    text-align: center;
     font-size: 1.4em;
     margin-bottom: 50px; 
     font-weight: 500;
     color: #333;
 }
-/* text align left target label */
-.first>label, .first>input, .first>select, .second>label, .second>input, .second>select, .second>textarea {
-    margin: 5px;
-    width: 300px;
-    padding: 5px;
+.first>h1 {
+    padding-top: 20px;
 }
-
+/* text align left target label */
+.first>div, .second>div { 
+        // border: 1px solid black;
+        position: relative;
+        text-align: right;
+        // left: -15%;
+        height: 20px;
+        padding: 20px;
+        width: 100%;
+        label {
+            padding-right: 10px;
+        }
+        input,  {
+            background: white;
+            border: none;
+            border-radius: 3px;
+            border: solid 1px #999;
+            width: 55%;
+        }
+        select  {
+            background: white;
+            border: none;
+            border-radius: 3px;
+            border: solid 1px #999;
+        }
+    }
 .second>.inst-wrapper>div {
-    display: inline-block;
+    // display: inline-block;
     // flex-direction: column;
     // justify-content: flex-start;
     width: 300px;
@@ -46,7 +82,7 @@ $font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 .second {
     height: 100vh;
     width: 100vw;
-    background: #fff;
+    // background: #fff;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .third {
@@ -57,26 +93,29 @@ $font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .does {
-    padding: 10px;
-    height: 40px;
-    width: 90px;
+    padding: 3x;
+    height: 20px;
+    width: 80px;
     background: #ccc;
     border: solid 1px #4d90fe;
     margin: 5px;
+    text-align: center;
 }
 .doesnt {
-    padding: 10px;
-    height: 40px;
-    width: 90px;
+    text-align: center;
+    padding: 3x;
+    height: 20px;
+    width: 80px;
     background: #fff;
     border-radius: 2px;
     border: solid 1px #4d90fe;
     margin:5px;
 }
 .does:hover, .doesnt:hover {
-    padding: 10px;
-    height: 40px;
-    width: 90px;
+    text-align: center;
+    padding: 3x;
+    height: 20px;
+    width: 80px;
     background: #4d90fe;
     border-radius: 2px;
     color: #fff;
@@ -84,12 +123,41 @@ $font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin:5px;
 }
 .does:active, .doesnt:active {
-    padding: 10px;
-    height: 40px;
-    width: 90px;
+    padding: 3x;
+    height: 20px;
+    width: 80px;
     background: #4684e7;
     border-radius: 2px;
     color: #fff;
     border: solid 1px #4d90fe;
     margin:5px;
+}
+
+#instru {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+// #move {
+//     position: relative;
+// }
+
+#secondButton {
+    position: absolute;
+    left: 205px;
+}
+#anotherone {
+    position: absolute;
+    left: 105px;
+}
+.third {
+    background: #F9F9F9;
+    p {
+        
+        margin-bottom: 7px;
+        span {
+            padding-right: 3px;
+            font-weight: 700;
+        }
+    }
 }

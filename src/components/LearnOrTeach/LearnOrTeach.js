@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setInstructor } from '../../redux/reducer'
 
-import './LearnOrTeach.css'
+import './LearnOrTeach.scss'
 
 
 class LearnOrTeach extends Component {
@@ -17,21 +17,23 @@ class LearnOrTeach extends Component {
         this.props.history.push(`/dashboard/${this.props.user[0].id}`);
     }
     render() {
-        const { isLoading } = this.props;
+        const { isLoading, user } = this.props;
         const { setInstructor } = this.props
         return (
+            <div>
             <div className='learnOrParent'>
                 
                 { isLoading ? null
-                : <div className='learnOrChild'><h1>LearnOrTeach</h1> 
+                : <div className='learnOrChild'><h1></h1> 
                 <button className='pickTeach' onClick={() => {
-                    setInstructor(this.props.user[0].id)
+                    setInstructor(user[0].id)
                     this.redirectHandler()
                     }}>
                     <p>Sign up as an instructor</p></button>
                 <button className='pickLearn' onClick={() => this.studentHandler()}><p>Sign up as a student</p></button> </div>
                 }
-                
+            </div>
+                <div className='greyBox'></div>
             </div>
         )
     }

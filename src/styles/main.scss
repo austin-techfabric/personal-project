@@ -1,12 +1,48 @@
+$colors: (
+    primary: #4d90fe,
+    primary-light: lighten(#4d90fe, 70%),
+    primary-dark: darken(#4d90fe, 40%),
+    double-dark: darken(#3563af, 40%),
+    accent: #333,
+    accent-light: lighten(#333, 25%),
+    accent-lighter: lighten(#333, 50%)
+);
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+}
+$font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .home-wrapper {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: $font;
     font-size: 1em;
-    line-height: 1.5em;
+    // line-height: 1.5em;
     color: #333;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 .v-header {
-    height: 100vh;
+    height: 77vh;
     display:flex;
     align-items: center;
     color:white;
@@ -24,7 +60,7 @@
     top: 0;
     left:0;
     width: 100%;
-    height: 90vh;
+    height: 77%;
     overflow: hidden;
 }
 .fullscreen-video-wrap video {
@@ -32,25 +68,69 @@
     min-height: 100%;
 }
 .header-overlay {
-    height: 90vh;
+    height: 77%;
     width: 100vw;
     position: absolute;
     top:0;
     left: 0;
-    background: #225470;
-    opacity: 0.85;
+    background: color(primary-dark);
+    opacity: 0.75;
     z-index: 1;
 }
 .header-content {
     z-index: 2;
     margin:auto;
+    height: 68%;
+    width: 100%;
+    font-weight: 600;
+    letter-spacing: 3px;
+
 }
-.header-content h1 {
-    font-size: 50px;
+.header-content {
+    font-size: 2.1em;
     margin-bottom:0;
+    p {
+
+        padding-top:27px;
+        display: inline-block;
+        width:70%;
+        font-size: 0.65em;
+        letter-spacing: 2px;
+        text-shadow: 0px 0px 13px rgb(12, 12, 12);
+    }
+    #cta {
+        font-size: 0.4em;
+        line-height: 19px;
+    }
+    span {
+        text-shadow: 0px 0px 13px rgb(12, 12, 12);
+    }
+    #phx {
+        color: #6fa6ff;
+        
+    }
     
 }
-.header-content p {
-    font-size: 1.5em;
-    display: block;
+.section2 {
+    // border-top: color(accent-lighter) solid 3px;
+    background: #F9F9F9;
+    padding-top: 20px;
+    height: 400px;
+    width: 100%;
+    font-family: $font;
+    h1 {
+        color: color(accent-light);
+        font-size: 1.6em;
+        padding-top:23px;
+    }
+    h2 {
+        a {
+            // text-decoration: none;
+            color: color(primary);
+        }
+
+
+        font-size: 1.3em;
+        color: #333
+    }
 }

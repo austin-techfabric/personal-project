@@ -12,18 +12,18 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 // === HOT RELOADER === \\
-import { AppContainer } from 'react-hot-loader';
+// import { AppContainer } from 'react-hot-loader';
 
 const render = () => {
 ReactDOM.render(
     
-    <AppContainer>
+    // <AppContainer>
       <Provider store={store}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
-      </Provider>
-    </AppContainer>,
+      </Provider>,
+    // </AppContainer>,
     document.getElementById('root')
     );
 };
@@ -35,8 +35,8 @@ registerServiceWorker();
 render();
 
 // Webpack Hot Module Replacement API
-if (module.hot) {
-  module.hot.accept('./App', () => {
-    render();
-  });
-}
+// if (module.hot) {
+//   module.hot.accept('./App', () => {
+//     render();
+//   });
+// }

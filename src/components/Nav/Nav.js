@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import { updateUser } from '../../redux/reducer';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './../../styles/nav.css'
+
+import './Nav.scss';
 
 class Nav extends Component {
     constructor () {
         super();
         this.state = {
-            user: ''
+            user: '',
+            active: false
         }
     }
     componentDidMount(){
@@ -27,6 +29,11 @@ class Nav extends Component {
         window.location = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${redirectUri}&response_type=code`
     }
 
+    toggleClass = () => {
+      // console.log(this.state.active)
+      const currentState = this.state.active;
+      this.setState({ active: !currentState });
+    };
     logout() {
         axios.post('/api/auth/logout').then(response => {
           window.alert('Successfully logged out')
@@ -39,23 +46,21 @@ class Nav extends Component {
       
     render() {
       
-        const { user } = this.state
-        // console.log('/Nav.js ---- this.props.user ------->', this.props.user)
+        const { user, active } = this.state
         return (
             <div className='Nav'>
-            <Link to='/'>Fret-Finder</Link>
-              <Link to={`/dashboard/${user.id}`}>Dashboard</Link>
-              <div className="dropdown">
-                <button className="dropbtn">Find a Teacher</button>
-                <div className="dropdown-content">
-                  <Link to='/display_instructors'>Browse Teachers</Link>
-                  <Link to='/'>Request a Teacher</Link>
-                </div>
-              </div>
-            {user ? <Link to='/'><button onClick={()=>this.logout()}> Logout</button></Link> : <button onClick={() => {this.login()}}>Login</button>}
+        <Link id='logo' to='/'>FRETFINDER</Link>
+              <div className='toggle'><i className='fa fa-bars' aria-hidden="true" onClick={this.toggleClass} ></i></div>
+              <ul className={active ? 'show': 'ultag'}>
+                <li><Link to={`/dashboard/${user.id}`}>Dashboard</Link></li>
+                <li><Link to='/display_instructors'>Browse Teachers</Link></li>
+            {user ? <li onClick={()=>this.logout()}><Link to='/'>Logout</Link></li> : <li onClick={() => {this.login()}}>Login / Register</li>}
+              </ul>
+              
+
             </div>
         )
-    }
+      }
 }
 
 

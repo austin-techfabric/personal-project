@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import './CreateSchedule.css'
+import './CreateSchedule.scss'
 import { Link } from 'react-router-dom';
 import { createSchedule } from './../../redux/reducer';
 
@@ -154,7 +154,7 @@ class CreateSchedule extends Component {
                 </div>
                 </div>
                 { this.state.doneToggle ?
-                <Link to={`/dashboard/${data.id}`}><button type="submit">Submit</button></Link> 
+                <Link to={`/dashboard/${data.id}`}><button  className='button' type="submit">Submit</button></Link> 
                 : <button type='button' onClick={() => {
                     this.doneHandler()
                     this.prep()

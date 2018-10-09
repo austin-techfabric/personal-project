@@ -12,15 +12,18 @@ $colors: (
 $font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 .dashparent {
+    border-top: solid 1px #333;
     font-family: $font;
+    background: rgb(233, 233, 233);
     // border: #333 solid 1px;
-    padding-top: 47px;
+    padding-top: 70px;
     overflow-x: hidden;
 
     h1 {
         font-weight: 700;
         font-size: 1.4em;
         padding: 23px;
+        color: #333;
         border-bottom: color(accent-lighter) solid 1px;
     }
     button {
@@ -44,10 +47,6 @@ $font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
         }
     }
-}
-.dashchild {
-    // border: #333 solid 1px;
-    
 }
 .singleLesson {
     font-size: 0.8em;

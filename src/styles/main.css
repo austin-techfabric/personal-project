@@ -1,13 +1,12 @@
 .home-wrapper {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1em;
-  line-height: 1.5em;
   color: #333;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .v-header {
-  height: 100vh;
+  height: 77vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,7 +27,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 90vh;
+  height: 77%;
   overflow: hidden;
 }
 
@@ -38,28 +37,72 @@
 }
 
 .header-overlay {
-  height: 90vh;
+  height: 77%;
   width: 100vw;
   position: absolute;
   top: 0;
   left: 0;
-  background: #225470;
-  opacity: 0.85;
+  background: #01307e;
+  opacity: 0.75;
   z-index: 1;
 }
 
 .header-content {
   z-index: 2;
   margin: auto;
+  height: 68%;
+  width: 100%;
+  font-weight: 600;
+  letter-spacing: 3px;
 }
 
-.header-content h1 {
-  font-size: 50px;
+.header-content {
+  font-size: 2.1em;
   margin-bottom: 0;
 }
 
 .header-content p {
-  font-size: 1.5em;
-  display: block;
+  padding-top: 27px;
+  display: inline-block;
+  width: 70%;
+  font-size: 0.65em;
+  letter-spacing: 2px;
+  text-shadow: 0px 0px 13px #0c0c0c;
+}
+
+.header-content #cta {
+  font-size: 0.4em;
+  line-height: 19px;
+}
+
+.header-content span {
+  text-shadow: 0px 0px 13px #0c0c0c;
+}
+
+.header-content #phx {
+  color: #6fa6ff;
+}
+
+.section2 {
+  background: #F9F9F9;
+  padding-top: 20px;
+  height: 400px;
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.section2 h1 {
+  color: #737373;
+  font-size: 1.6em;
+  padding-top: 23px;
+}
+
+.section2 h2 {
+  font-size: 1.3em;
+  color: #333;
+}
+
+.section2 h2 a {
+  color: #4d90fe;
 }
 /*# sourceMappingURL=main.css.map */

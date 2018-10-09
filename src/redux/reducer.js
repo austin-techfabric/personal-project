@@ -46,9 +46,9 @@ export default function instructor_reducer(state = initialState, action) {
         return Object.assign({}, state, action.payload)
 
         case `${GET_INSTRUCTORS}_PENDING`:
-            return {...state, isLoading: true}
+            return {...state}
         case `${GET_INSTRUCTORS}_FULFILLED`:
-            return {...state, instructors: action.payload, isLoading: false}
+            return {...state, instructors: action.payload}
 
         case `${GET_SINGLE_INSTRUCTOR}_PENDING`:
             return {...state }
@@ -96,7 +96,7 @@ export default function instructor_reducer(state = initialState, action) {
 } 
 
 export function submitHandler(age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id) {
-    console.log('REDUCER ~~~~~~~~~~ age -->', age, 'gender -->', gender, 'locationType -->', locationType, 'zipcode -->', zipcode, 'address -->', address, 'city -->', city, 'state -->', state, 'country -->', country,  'price -->', price, 'instrument -->',  instruments, 'styles -->', styles, 'skilllevel -->', skillLevel, 'teachingSince -->', teachingSince, 'about -->', about, 'education -->', education, 'id -->', id);
+    // console.log('REDUCER ~~~~~~~~~~ age -->', age, 'gender -->', gender, 'locationType -->', locationType, 'zipcode -->', zipcode, 'address -->', address, 'city -->', city, 'state -->', state, 'country -->', country,  'price -->', price, 'instrument -->',  instruments, 'styles -->', styles, 'skilllevel -->', skillLevel, 'teachingSince -->', teachingSince, 'about -->', about, 'education -->', education, 'id -->', id);
     return {
         type: SUBMIT_HANDLER,
         payload: axios.post(`/api/instructor_profile/`, {age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id})
@@ -118,7 +118,7 @@ export function setInstructor(id) {
     }
 }
 export function setComplete(id) {
-    console.log('setComplete fired', id)
+    // console.log('setComplete fired', id)
     return {
         type: SET_COMPLETE,
         payload: axios.put('/api/set_profile_complete', {id})
@@ -128,12 +128,12 @@ export function setComplete(id) {
     }
 }
 export function getInstructors() {
-    // console.log('getInstructors fired!')
+    console.log('getInstructors fired!')
     return {
         type: GET_INSTRUCTORS,
         payload: axios.get('/api/instructors')
         .then(response => {
-            // console.log('getInstructors response ------->', response.data)
+            console.log('getInstructors response ------->', response.data)
             return response.data
         })
         .catch(err => console.log('err', err))
@@ -198,14 +198,14 @@ export function createReview(reviews) {
     }
 }
 export function createLesson(lessons) {
-    console.log('createReview in reducer', lessons)
+    // console.log('createReview in reducer', lessons)
     return {
         type: CREATE_LESSON,
         payload: {lessons}
     }
 }
 export function createSchedule(holidays, sunstart, sunend, monstart, monend, tuestart, tueend, wedstart, wedend, thurstart, thurend, fristart, friend, satstart, satend, instructor_id) {
-    console.log('createSchedule in reducer, arguments', holidays, sunstart, sunend, monstart, monend, tuestart, tueend, wedstart, wedend, thurstart, thurend, fristart, friend, satstart, satend, instructor_id)
+    // console.log('createSchedule in reducer, arguments', holidays, sunstart, sunend, monstart, monend, tuestart, tueend, wedstart, wedend, thurstart, thurend, fristart, friend, satstart, satend, instructor_id)
     return {
         type: CREATE_SCHEDULE,
         payload: axios.post(`/api/instructor_create_schedule/`, {holidays, sunstart, sunend, monstart, monend, tuestart, tueend, wedstart, wedend, thurstart, thurend, fristart, friend, satstart, satend, instructor_id})

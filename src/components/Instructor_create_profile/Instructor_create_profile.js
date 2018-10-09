@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { submitHandler, setComplete, updateUser } from '../../redux/reducer';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import './instructor_create_profile.css'
+import './instructor_create_profile.scss'
 import jump from 'jump.js';
 
 
@@ -76,8 +76,8 @@ class Instructor_create_profile extends Component {
     }
 
       render() {
-        console.log(' this.props.user --------->', this.props.user)
-        console.log(' this.props.instruments --------->', this.state.instruments)
+        // console.log(' this.props.user --------->', this.props.user)
+        // console.log(' this.props.instruments --------->', this.state.instruments)
      
         const { user, submitHandler, setComplete } = this.props
         const { age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education} = this.state
@@ -94,14 +94,14 @@ class Instructor_create_profile extends Component {
             
             <form onSubmit={(e) => this.onSubmit(e)}> 
             <div className='first'>
-              <h1>Welcome, {user.name}</h1>
+              <h1>Welcome, {data.name}</h1>
            <div>
-              <label>Age: </label>
+              <label>age: </label>
               <input type="text" name="age" required value={age || ''} onChange={this.onChange} />
            </div>
 
             <div> 
-              <label>Gender: </label>
+              <label>gender: </label>
               <select name='gender' onChange={this.onChange}>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -109,7 +109,7 @@ class Instructor_create_profile extends Component {
             </div>
 
             <div>
-              <label>Location Type: </label>
+              <label>location Type: </label>
                 <select name='locationType' onChange={this.onChange}>
                   <option value='studio'>Studio</option>
                   <option value='home'>Home</option>
@@ -204,13 +204,11 @@ class Instructor_create_profile extends Component {
           <input type="text" name="price" value={price || ''} onChange={this.onChange} ></input>
             </div>  
 
-            <div>
+            <div id='instru'>
           <label htmlFor="instruments">instruments: </label>
-          <div className='inst-wrapper'>
             <div className={this.state.guitar ? 'does' : 'doesnt'} onClick={() => this.guitHandler()}>Guitar</div>
             <div className={this.state.bass ? 'does' : 'doesnt'} onClick={() => this.bassHandler()}>Bass</div>
             <div className={this.state.ukulele ? 'does' : 'doesnt'} onClick={() => this.ukeHandler()}>Ukulele</div>
-          </div>
             </div>
 
             <div>
@@ -304,58 +302,58 @@ class Instructor_create_profile extends Component {
 
             <div>
           <label htmlFor="about">About: </label>
-          <textarea type="text" name="about" value={about} onChange={this.onChange} />
+          <input type="text" name="about" value={about} onChange={this.onChange} />
             </div>
 
             <div>
           <label htmlFor="education">Education: </label>
           <input type="text" name="education" onChange={this.onChange} />
             </div>
-            
+              <div >
                 <button id="secondButton" onClick={() => {
                   this.handleInst()
                   jump('.first')
 
                 }}
                 >Back</button>
-                <button id="secondButton" onClick={() => {
+                <button id="anotherone" onClick={() => {
                   this.handleInst()
                   jump('.third')
 
                 }}
                 >Next</button>
+
+                </div>
             
             
             </div>
             <div className='third'>
-
-                    
-                    
                     <h1>Review</h1>
-                    <p>Age: {this.state.age}</p>
-                    <p>Gender: {this.state.gender}</p>
-                    <p>Location Type: {this.state.locationType}</p>
-                    <p>Zipcode: {this.state.zipcode}</p>
-                    <p>Address: {this.state.address}</p>
-                    <p>City: {this.state.city}</p>
-                    <p>State: {this.state.state}</p>
-                    <p>Country: {this.state.country}</p>
-                    <p>Price: ${this.state.price}/hr</p>
-                    <p>Instruments: {this.state.guitar ? ' Guitar ' : null}{this.state.bass ? ' Bass ' : null}{this.state.ukulele ? ' Ukulele ' : null}</p>
-                    <p>Genres: {this.state.styles}</p>
-                    <p>Skill Level: {this.state.skillLevel}</p>
-                    <p>Teaching Since: {this.state.teachingSince}</p>
-                    <p>About: {this.state.about}</p>
-                    <p>Education: {this.state.education}</p>
+                    <p><span>Age:</span> {this.state.age}</p>
+                    <p><span>Gender:</span> {this.state.gender}</p>
+                    <p><span>Location Type:</span> {this.state.locationType}</p>
+                    <p><span>Zipcode:</span> {this.state.zipcode}</p>
+                    <p><span>Address:</span> {this.state.address}</p>
+                    <p><span>City:</span> {this.state.city}</p>
+                    <p><span>State:</span> {this.state.state}</p>
+                    <p><span>Country:</span> {this.state.country}</p>
+                    <p><span>Price:</span> ${this.state.price}/hr</p>
+                    <p><span>Instruments:</span> {this.state.guitar ? ' Guitar ' : null}{this.state.bass ? ' Bass ' : null}{this.state.ukulele ? ' Ukulele ' : null}</p>
+                    <p><span>Genres:</span> {this.state.styles}</p>
+                    <p><span>Skill Level:</span> {this.state.skillLevel}</p>
+                    <p><span>Teaching Since:</span> {this.state.teachingSince}</p>
+                    <p><span>About:</span> {this.state.about}</p>
+                    <p><span>Education:</span> {this.state.education}</p>
 
 
-
+                <div>
                <Link to="/instructor_create_schedule"><button type="submit" onClick={() => {
                 setComplete(id)
                 submitHandler(age, gender, locationType, zipcode, address, city, state, country, price, instruments, styles, skillLevel, teachingSince, about, education, id)
                 }}>Submit</button></Link>
 
             <button id="thirdButton" onClick={() => jump('.second')} >Back</button>
+            </div>
             </div>
  
 

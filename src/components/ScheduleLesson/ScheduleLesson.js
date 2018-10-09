@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getSchedule, createLesson } from './../../redux/reducer';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './sched.css'
+import './sched.scss'
 
 class ScheduleLesson extends Component {
     constructor () {
@@ -26,7 +26,7 @@ class ScheduleLesson extends Component {
     }
 
     onChange(e) {
-        console.log(e.target.name, e.target.value)
+        // console.log(e.target.name, e.target.value)
         this.setState({[e.target.name]: e.target.value});
     }
 
@@ -34,10 +34,10 @@ class ScheduleLesson extends Component {
         e.preventDefault();
         
         let dateval = 'Lesson with ' + instructor_name + ' on ' + month + ', ' + day + ' at ' + startTime + ' for ' + duration + ' minutes.'
-        console.log('createLesson clicked', 'instrument:', instrument, 'lessonLocation:', lessonLocation, 'duration:', duration, 'dateval:', dateval, 'name', instructor_name, month, day, startTime,)
+        // console.log('createLesson clicked', 'instrument:', instrument, 'lessonLocation:', lessonLocation, 'duration:', duration, 'dateval:', dateval, 'name', instructor_name, month, day, startTime,)
         axios.post(`/api/create_lesson/${this.props.match.params.id}`, {student_id, lessonLocation, instrument, duration, dateval})
         .then(response => {
-            console.log('createLesson response.data ======>', response.data)
+            // console.log('createLesson response.data ======>', response.data)
             this.props.history.push(`/dashboard/${student_id}`)
         })
         .catch(error => console.log('createLesson frontend ==== ', error))
@@ -49,7 +49,7 @@ class ScheduleLesson extends Component {
         const newSchedule = this.props.schedule.length > 0 ? this.props.schedule[0]: {}
         // console.log('data' , data)
         let desUser = this.props.user.length ? this.props.user[0]: {}
-        let {holidays, sunstart, sunend, monstart, monend, tuestart, tueend, wedstart, wedend, thurstart, thurend, fristart, friend, satstart, satend} = newSchedule
+        let {sunstart, sunend, monstart, monend, tuestart, tueend, wedstart, wedend, thurstart, thurend, fristart, friend, satstart, satend} = newSchedule
         let {instrument, lessonLocation, duration} = this.state
         return (
             <div className='sched-parent'>
@@ -57,7 +57,7 @@ class ScheduleLesson extends Component {
                 <div className='moveOutTheWay'>
             <Link  to="/display_instructors"><button>Back</button></Link>
             </div>
-                    <img src={data.picture_url} />
+                    <img src={data.picture_url} alt='go home' />
                     <div className='blueBox'><h1>Your Request to {data.name}</h1></div>
                     <form onSubmit={(e) => {this.createLesson(e, desUser.id, instrument, lessonLocation, duration, this.state.month, this.state.day, this.state.startTime, data.name)}}>
                     <div>

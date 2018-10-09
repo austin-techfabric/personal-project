@@ -29,8 +29,15 @@ $font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 
 
+.greyBox {
+    height: 400px;
+    background: rgb(212, 212, 212);
+    width: 100%;
+}
 .learnOrChild {
-    margin-top: 47px;
+    overflow: hidden;
+    // margin-top: 47px;
+    padding-top: 65px;
     display: flex;
     flex-direction: column;
 }
@@ -47,7 +54,7 @@ $font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         height: 100%;
         width: 102vw;
         left: -10px;
-        top: 2px;
+        top: 0px;
         text-align: center;
         padding-top:85px;
         transition: 0.5s;

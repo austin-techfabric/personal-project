@@ -24,3 +24,4 @@ join instructor_profile ip
 on u.id = ip.instructor_id
 where u.instructor = true
 
+-- select * from users

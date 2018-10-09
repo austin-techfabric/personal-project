@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import './../Dashboard/Dashboard.css'
+import './../Dashboard/Dashboard.scss'
 
 export default class DisplayLessons extends Component {
     render() {
@@ -9,7 +9,6 @@ export default class DisplayLessons extends Component {
                 <p>{this.props.dateval}</p>
                 <p>Location: {this.props.location}</p>
                 <p>Instrument {this.props.instrument}</p>
-                {/* <p>Duration {this.props.duration}</p> */}
             </div>
         )
     }

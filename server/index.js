@@ -20,9 +20,8 @@ const lesson_controller = require('./controllers/lesson_controller')
 
 // =====================================   Middlewares    =============================================== \\
 
-
 app.use(bodyParser.json());
-
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -151,6 +150,11 @@ app.post('/api/auth/logout', (req, res) => {
     req.session.destroy()
     res.send()
 });
+
+const path = require('path')
+app.get('*', (req, res)=>{
+ res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
 const port = 4000;
 app.listen(port, () => console.log(`listening on port ${port}`));

@@ -5,7 +5,7 @@ import { getLessons } from './../../redux/reducer';
 
 import Lessons from './../DisplayLessons/DisplayLessons';
 
-import './Dashboard.css'
+import './Dashboard.scss'
 
 class Dashboard extends Component {
     constructor() {
@@ -21,7 +21,7 @@ class Dashboard extends Component {
     // console.log(this.props.user)
     const desUser = this.props.user.length > 0 ? this.props.user[0]: {}
     const desLessons =  this.props.lessons ? this.props.lessons.length > 0 ? this.props.lessons[0]: {} : null
-    const desInstructors = this.props.instructor.length > 0 ? this.props.instructor[0]: {}
+    // const desInstructors = this.props.instructor.length > 0 ? this.props.instructor[0]: {}
     console.log('Lessons pulled from db --->', desLessons)
     // console.log(desInstructors)
     let displayLessons = this.props.lessons.map((lesson, index) => {
@@ -29,7 +29,6 @@ class Dashboard extends Component {
         <Lessons className="onelessons" key={index} location={lesson.lessonlocation} duration={lesson.duration} instrument={lesson.instrument} dateval={lesson.dateval} />
       )
     })
-
     return (
       <div className='dashparent'>
         <div className='dashchild'>
@@ -39,8 +38,8 @@ class Dashboard extends Component {
         { desUser.instructor && <Link to='/instructor_schedule'><button>Edit Schedule</button></Link>}
         
         <div>{
-            (!desUser.instructor && displayLessons.length > 0) ?
-          <div>{displayLessons}</div> : <Link to='/display_instructors'>You don't have any lessons scheduled. Click here to browse instructors!</Link>
+
+          <div>{displayLessons}</div>
         }</div>
         </div>
       </div>

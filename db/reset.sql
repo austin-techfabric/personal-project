@@ -17,8 +17,7 @@ create table users (
 
 create table instructor_profile (
     id serial primary key, 
-    instructor_id integer references users(id),										
-    age integer not null, 
+    instructor_id integer references users(id),	age integer not null, 
     gender varchar(10) not null, 
     locationType varchar(10),
     zipcode integer, 
