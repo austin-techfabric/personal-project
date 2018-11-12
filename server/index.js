@@ -34,6 +34,7 @@ app.use(session({
 
 // ===============================================    Auth0    ============================================= \\
 app.get(`/auth/callback`, (req, res) => {
+	console.log('/auth/callback fired!')
     const payload = {
         client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
         client_secret: process.env.AUTH0_CLIENT_SECRET,
@@ -98,6 +99,7 @@ app.get(`/auth/callback`, (req, res) => {
     res.status(500).send(' Error on server during auth')    
 })
 })
+.catch(err => console.log('End of the line catch', err))
 
 
 // ===================================== Database Connection ==================================== \\
