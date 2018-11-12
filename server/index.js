@@ -30,7 +30,7 @@ app.use(session({
     maxAge: 1000 * 60 * 60 *  24 * 365
     }
    }));
-   app.use(express.static(`${__dirname}/../build`));
+//    app.use(express.static(`${__dirname}/../build`));
 
 // ===============================================    Auth0    ============================================= \\
 app.get(`/auth/callback`, (req, res) => {
@@ -68,7 +68,7 @@ app.get(`/auth/callback`, (req, res) => {
                         res.redirect('/dashboard/');
                     } else {
                         console.log('Instructor create profile reached')
-                        res.redirect('/instructor_create_profile'); 
+                        res.redirect('/instructor_create_profile');
                     }
                 } else {
                     res.redirect(`/dashboard/${req.session.user.id}`);
@@ -77,7 +77,6 @@ app.get(`/auth/callback`, (req, res) => {
                 console.log('user not found, creating');
                 let {name, email} = response.data;
                 console.log(auth0Id, name, email);
-                
                 return db.create_user([auth0Id, name,  email]).then(newlyCreatedUser => {
                     console.log('newlyCreatedUser', newlyCreatedUser)
                     req.session.user = newlyCreatedUser;
@@ -90,16 +89,15 @@ app.get(`/auth/callback`, (req, res) => {
         }).catch(err => {
             console.log('error in get_instructor_by_auth0_id', err)
             res.status(500).send('An unknown error occurred')
-    })  
+    })
     }
     tradeCodeForAccessToken()
     .then(tradeAccessTokenForUserInfo)
     .then(storeUserInfoInDataBase)
     .catch(err => {console.log('(tradeCodeForAccessToken) error', err)
-    res.status(500).send(' Error on server during auth')    
+    res.status(500).send(' Error on server during auth')
 })
-})
-.catch(err => console.log('End of the line catch', err))
+}).catch(err => console.log('End of the line catch', err))
 
 
 // ===================================== Database Connection ==================================== \\
