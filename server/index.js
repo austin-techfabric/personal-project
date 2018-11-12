@@ -97,7 +97,7 @@ app.get(`/auth/callback`, (req, res) => {
     .catch(err => {console.log('(tradeCodeForAccessToken) error', err)
     res.status(500).send(' Error on server during auth')
 })
-}).catch(err => console.log('End of the line catch', err))
+})
 
 
 // ===================================== Database Connection ==================================== \\
