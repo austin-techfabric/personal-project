@@ -30,7 +30,7 @@ app.use(session({
     maxAge: 1000 * 60 * 60 *  24 * 365
     }
    }));
-   app.use(express.static(`${__dirname}/../build`));
+//    app.use(express.static(`${__dirname}/../build`));
 
 // ===============================================    Auth0    ============================================= \\
 app.get(`/auth/callback`, (req, res) => {
