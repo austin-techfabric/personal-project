@@ -35,7 +35,7 @@ class Dashboard extends Component {
         <h1>Your dashboard</h1>
         <Link to="/display_instructors"><button>Browse instructors</button></Link>
 
-        { desUser.instructor && <Link to='/instructor_schedule'><button>Edit Schedule</button></Link>}
+        {/* { desUser.instructor && <Link to='/instructor_schedule'><button>Edit Schedule</button></Link>} */}
         
         <div>{
 

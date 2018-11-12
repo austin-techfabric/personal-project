@@ -91,7 +91,7 @@ insert into users (
     'mweeler@gmail.com',
     true,
     true,
-    'https://dj1hlxw0wr920.cloudfront.net/userfiles/wyzfiles/5803c5f6-bffc-4cb0-9393-5e5ce2d988a1.jpg',
+    'https://images.unsplash.com/photo-1518550475464-99b1438b9b69?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a4ed941e126fbda1d53ea2d0adbbbbec&auto=format&fit=crop&w=2100&q=80',
     true
 );
 

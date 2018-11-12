@@ -42,13 +42,16 @@ app.get(`/auth/callback`, (req, res) => {
         redirect_uri: `http://${req.headers.host}/auth/callback`,
     };
     function tradeCodeForAccessToken() {
+        console.log('tradeCodeForAccessToken')
         return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload)
     };
     function tradeAccessTokenForUserInfo(accessTokenResponse) {
+        console.log('tradeAccessTokenForUserInfo')
         const accessToken = accessTokenResponse.data.access_token;
         return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo/?access_token=${accessToken}`)
     };
     function storeUserInfoInDataBase(response) {
+        console.log('storeUserInfoInDataBase')
         const auth0Id = response.data.sub;
         console.log(' auth0Id',auth0Id);
         const db = req.app.get('db');
@@ -109,8 +112,6 @@ massive(process.env.CONNECTION_STRING).then(database => {
 
 app.get('/api/instructor_profile/:id', display_single_instructor.get_user_by_id);
 
-
-
 app.get('/api/instructor_reviews/:id', review_controller.get_reviews);
 app.delete('/api/instructor_reviews/:id', review_controller.delete);
 app.put('/api/instructor_reviews/:id', review_controller.edit);
@@ -118,11 +119,9 @@ app.post('/api/instructor_reviews/:id', review_controller.create);
 
 app.get('/api/instructor_schedule/:id', schedule_controller.get_schedule_by_id)
 app.post('/api/instructor_create_schedule', schedule_controller.create)
-// app.put('/api/instructor_create_schedule/:id', schedule_controller.update_by_id)
 
 app.post('/api/create_lesson/:id', lesson_controller.create)
 app.get('/api/lessons/:id', lesson_controller.get_lesson)
-// app.post('')
 
 app.post(`/api/instructor_profile`, instructor_profile_controller.create)
 
@@ -139,7 +138,7 @@ app.put('/api/set_instructor', instructor_profile_controller.set_as_instructor);
 
 
 app.get('/api/user-data', (req, res) => {
-    // console.log(req.session.user)
+    console.log(req.session.user)
     res.json(req.session.user);
 });
 

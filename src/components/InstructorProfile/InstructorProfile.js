@@ -31,7 +31,7 @@ import './instructor_profile.scss'
                toggleValue: !prevState.toggleValue,
            }
         })
-    }
+    } 
     handleDelete = (deletedId) => {
         // console.log('CLICKED', deletedId)
         axios.delete(`/api/instructor_reviews/${this.props.match.params.id}?deletedId=${deletedId}`)
@@ -85,18 +85,7 @@ import './instructor_profile.scss'
         const reviewList = reviews
 
         console.log('Instructor Profile pulled from db --->', data)
-
-
-
-
-
-
-
-
-
-
-
-
+        
         const renderReviews = reviewList.map((review, index) => {
             return (
                 <Review className='review'
@@ -114,24 +103,11 @@ import './instructor_profile.scss'
             )
         })
 
-
-
-
-
-
-
-
-
-
         return (
             <div className='instructor-profile-wrapper'>
                 <div className='instructor-profile-info'>
                 <div className='moveOutTheWay'>
             <Link  to="/display_instructors"><button>Back</button></Link>
-
-
-
-
 
             </div>
                 <img src={data.picture_url} alt='hullo'/>
@@ -194,8 +170,6 @@ import './instructor_profile.scss'
         )
     }
 }
-
-
 const mapStateToProps = initState => {
     const { instructor, reviews, user } = initState.instructor_reducer;
     return { instructor, reviews, user }
