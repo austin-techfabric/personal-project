@@ -3,7 +3,7 @@ module.exports = {
         const db = req.app.get('db')
         const { id } = req.params
         let instructor_id = id
-        console.log(id)
+        // console.log(id)
         db.get_schedule_by_id([instructor_id])
         .then(response => {
             console.log('get_schedule_by_id ----------->', response)
@@ -39,7 +39,7 @@ module.exports = {
             instructor_id
         ])
         .then(response => {
-            console.log('create_schedule ----------->', response.data)
+            // console.log('create_schedule ----------->', response.data)
             res.status(200).send('OK')
         })
         .catch(error => console.log('CONTROLLER ------ create_schedule ---', error))

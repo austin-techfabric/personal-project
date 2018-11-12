@@ -4,7 +4,7 @@ module.exports = {
 
         const db = req.app.get('db');
         const {id} = req.params
-        console.log(id)
+        // console.log(id)
 
         db.get_specific_instructor([id])
         .then((instructor) => res.status(200).send(instructor))
